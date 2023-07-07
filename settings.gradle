@@ -1,0 +1,5 @@
+rootProject.name = 'heypet-backend'
+include 'app'
+include 'core'
+include 'vet'
+include 'tutor'

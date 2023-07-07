@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - !include classpath:/db/changelog/db.changelog-b2b.yaml
+  - !include classpath:/db/changelog/db.changelog-b2c.yaml
+  - !include classpath:/db/changelog/db.changelog-core.yaml
