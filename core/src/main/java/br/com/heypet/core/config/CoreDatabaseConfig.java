@@ -1,5 +1,6 @@
 package br.com.heypet.core.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,9 @@ public class CoreDatabaseConfig {
     @Value("${core.datasource.password}")
     private String password;
 
-    @Bean
+    @Value("${core.liquibase.change-log}")
+    private String changelogFile;
+
     public DataSource coreDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -28,5 +31,13 @@ public class CoreDatabaseConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
+
+    @Bean
+    public SpringLiquibase coreLiquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog(changelogFile);
+        liquibase.setDataSource(coreDataSource());
+        return liquibase;
     }
 }

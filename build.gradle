@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.1'
     id 'io.spring.dependency-management' version '1.1.0'
+    id "org.sonarqube" version "4.2.1.3168"
 }
 
 repositories {
@@ -25,6 +26,7 @@ subprojects {
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         implementation 'org.springframework.boot:spring-boot-starter-web'
     }
+
 }
 
 allprojects {
@@ -60,5 +62,12 @@ allprojects {
 
 }
 
+sonar {
+    properties {
+        property "sonar.projectKey", "demelomatt_heypet"
+        property "sonar.organization", "demelomatt"
+        property "sonar.host", "https://sonarcloud.io"
+    }
+}
 
 

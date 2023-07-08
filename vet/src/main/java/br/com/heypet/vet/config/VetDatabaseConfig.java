@@ -1,5 +1,6 @@
 package br.com.heypet.vet.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,9 @@ public class VetDatabaseConfig {
     @Value("${vet.datasource.password}")
     private String password;
 
-    @Bean
+    @Value("${vet.liquibase.change-log}")
+    private String changelogFile;
+
     public DataSource vetDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -28,5 +31,13 @@ public class VetDatabaseConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
+
+    @Bean
+    public SpringLiquibase vetLiquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog(changelogFile);
+        liquibase.setDataSource(vetDataSource());
+        return liquibase;
     }
 }

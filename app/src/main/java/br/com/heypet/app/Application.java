@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 @EnableConfigurationProperties
 @ComponentScan(basePackages = {"br.com.heypet"})
 @EnableJpaRepositories(basePackages = {"br.com.heypet"})
-//@Import({CorePropsConfig.class, B2bPropsConfig.class , B2cPropsConfig.class})
 public class Application {
 
     public static void main(String[] args) {

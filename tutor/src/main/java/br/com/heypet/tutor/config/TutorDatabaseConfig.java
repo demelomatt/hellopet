@@ -1,5 +1,6 @@
 package br.com.heypet.tutor.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,9 @@ public class TutorDatabaseConfig {
     @Value("${tutor.datasource.password}")
     private String password;
 
-    @Bean
+    @Value("${tutor.liquibase.change-log}")
+    private String changelogFile;
+
     public DataSource tutorDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -28,5 +31,13 @@ public class TutorDatabaseConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
+
+    @Bean
+    public SpringLiquibase tutorLiquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog(changelogFile);
+        liquibase.setDataSource(tutorDataSource());
+        return liquibase;
     }
 }
