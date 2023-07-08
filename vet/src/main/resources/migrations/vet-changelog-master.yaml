@@ -1,18 +1,19 @@
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: Matheus Melo
+      author: matheus
       changes:
         - createTable:
-            tableName: pet
+            tableName: vet
             columns:
               - column:
                   name: id
-                  type: bigint
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
-                  name: nome
-                  type: varchar(100)
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
