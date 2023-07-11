@@ -32,6 +32,11 @@ jobs:
     - name: Build and run Docker Compose services
       run: |
         docker compose up -d
+        
+    - name: Test MySQL connection
+      run: |
+        docker compose exec db mysql -h localhost -P 3306 -u root -proot -e "SELECT 1;"
+
 
   build:
     runs-on: ubuntu-latest
