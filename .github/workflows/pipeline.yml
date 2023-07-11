@@ -31,7 +31,7 @@ jobs:
 
     - name: Build and run Docker Compose services
       run: |
-        docker compose up -d
+        docker compose -f docker-compose-build.yml up -d
         
     - name: Test MySQL connection        
       run: |
@@ -39,7 +39,6 @@ jobs:
             echo 'Waiting for MySQL to start...'
             sleep 1
           done
-
 
   build:
     runs-on: ubuntu-latest
