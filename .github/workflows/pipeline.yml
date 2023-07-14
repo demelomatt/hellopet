@@ -18,31 +18,8 @@ permissions:
 
 jobs:
 
-  database:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Docker Compose
-      run: |
-        sudo apt-get update
-        sudo apt-get -y install docker-compose
-
-    - name: Build and run Docker Compose services
-      run: |
-        docker compose -f docker-compose-build.yml up -d
-        
-    - name: Test MySQL connection        
-      run: |
-          until docker compose exec db mysql -h localhost -P 3306 -u root -proot -e "SELECT 1;"; do
-            echo 'Waiting for MySQL to start...'
-            sleep 1
-          done
-
   build:
     runs-on: ubuntu-latest
-    needs: database
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
