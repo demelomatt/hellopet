@@ -21,12 +21,15 @@ public class TutorDatabaseConfig {
     @Value("${tutor.datasource.password}")
     private String password;
 
+    @Value("${tutor.datasource.driver-class-name}")
+    private String driverClassName;
+
     @Value("${tutor.liquibase.change-log}")
     private String changelogFile;
 
     public DataSource tutorDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);

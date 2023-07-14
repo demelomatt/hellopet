@@ -1,4 +1,4 @@
-package br.com.heypet.vet.config;
+package br.com.heypet.core.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,23 +10,26 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:vet.properties")
-public class VetDatabaseConfig {
-    @Value("${vet.datasource.url}")
+@PropertySource("classpath:core.properties")
+public class CoreDatabaseConfig {
+    @Value("${core.datasource.url}")
     private String url;
 
-    @Value("${vet.datasource.username}")
+    @Value("${core.datasource.username}")
     private String username;
 
-    @Value("${vet.datasource.password}")
+    @Value("${core.datasource.password}")
     private String password;
 
-    @Value("${vet.liquibase.change-log}")
+    @Value("${core.datasource.driver-class-name}")
+    private String driverClassName;
+
+    @Value("${core.liquibase.change-log}")
     private String changelogFile;
 
-    public DataSource vetDataSource() {
+    public DataSource coreDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
@@ -34,10 +37,10 @@ public class VetDatabaseConfig {
     }
 
     @Bean
-    public SpringLiquibase vetLiquibase() {
+    public SpringLiquibase coreLiquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setChangeLog(changelogFile);
-        liquibase.setDataSource(vetDataSource());
+        liquibase.setDataSource(coreDataSource());
         return liquibase;
     }
 }
