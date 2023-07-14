@@ -4,7 +4,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: vet
+            tableName: PET
             columns:
               - column:
                   name: id
