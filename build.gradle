@@ -30,7 +30,7 @@ subprojects {
 }
 
 allprojects {
-    group = 'br.com.heypet'
+    group = 'br.com.hellopet'
     version = '0.0.1-SNAPSHOT'
 
     java {
@@ -64,7 +64,7 @@ allprojects {
 
 sonar {
     properties {
-        property "sonar.projectKey", "demelomatt_heypet"
+        property "sonar.projectKey", "demelomatt_hellopet"
         property "sonar.organization", "demelomatt"
         property "sonar.host", "https://sonarcloud.io"
     }

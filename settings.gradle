@@ -1,4 +1,4 @@
-rootProject.name = 'heypet-backend'
+rootProject.name = 'hellopet-backend'
 include 'app'
 include 'core'
 include 'vet'

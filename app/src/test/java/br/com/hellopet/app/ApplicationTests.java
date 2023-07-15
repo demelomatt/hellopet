@@ -1,4 +1,4 @@
-package br.com.heypet.app;
+package br.com.hellopet.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

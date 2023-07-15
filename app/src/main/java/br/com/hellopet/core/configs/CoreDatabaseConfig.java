@@ -1,4 +1,4 @@
-package br.com.heypet.tutor.config;
+package br.com.hellopet.core.configs;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,24 +10,24 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:tutor.properties")
-public class TutorDatabaseConfig {
-    @Value("${tutor.datasource.url}")
+@PropertySource("classpath:core.properties")
+public class CoreDatabaseConfig {
+    @Value("${core.datasource.url}")
     private String url;
 
-    @Value("${tutor.datasource.username}")
+    @Value("${core.datasource.username}")
     private String username;
 
-    @Value("${tutor.datasource.password}")
+    @Value("${core.datasource.password}")
     private String password;
 
-    @Value("${tutor.datasource.driver-class-name}")
+    @Value("${core.datasource.driver-class-name}")
     private String driverClassName;
 
-    @Value("${tutor.liquibase.change-log}")
+    @Value("${core.liquibase.change-log}")
     private String changelogFile;
 
-    public DataSource tutorDataSource() {
+    public DataSource coreDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
@@ -37,10 +37,10 @@ public class TutorDatabaseConfig {
     }
 
     @Bean
-    public SpringLiquibase tutorLiquibase() {
+    public SpringLiquibase coreLiquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setChangeLog(changelogFile);
-        liquibase.setDataSource(tutorDataSource());
+        liquibase.setDataSource(coreDataSource());
         return liquibase;
     }
 }

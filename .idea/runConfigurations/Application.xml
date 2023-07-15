@@ -5,8 +5,8 @@
     <envs>
       <env name="spring.profiles.active" value="local" />
     </envs>
-    <option name="MAIN_CLASS_NAME" value="br.com.heypet.app.Application" />
-    <module name="heypet-backend.app.main" />
+    <option name="MAIN_CLASS_NAME" value="br.com.hellopet.app.Application" />
+    <module name="hellopet-backend.app.main" />
     <shortenClasspath name="ARGS_FILE" />
     <method v="2">
       <option name="Make" enabled="true" />

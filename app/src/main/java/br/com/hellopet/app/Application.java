@@ -1,4 +1,4 @@
-package br.com.heypet.app;
+package br.com.hellopet.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +13,8 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@ComponentScan(basePackages = {"br.com.heypet"})
-@EnableJpaRepositories(basePackages = {"br.com.heypet"})
+@ComponentScan(basePackages = {"br.com.hellopet"})
+@EnableJpaRepositories(basePackages = {"br.com.hellopet"})
 public class Application {
 
     public static void main(String[] args) {
