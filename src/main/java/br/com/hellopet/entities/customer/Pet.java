@@ -1,7 +1,7 @@
-package br.com.hellopet.entities.pet;
+package br.com.hellopet.entities.customer;
 
 import br.com.hellopet.entities.core.enums.Genero;
-import br.com.hellopet.entities.pet.enums.Especie;
+import br.com.hellopet.entities.customer.enums.Especie;
 
 import java.time.LocalDate;
 

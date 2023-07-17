@@ -1,4 +1,4 @@
-package br.com.hellopet.entities.tutor;
+package br.com.hellopet.entities.customer;
 
 import br.com.hellopet.entities.core.Endereco;
 
