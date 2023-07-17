@@ -1,4 +1,4 @@
-package br.com.hellopet.entities.vet.enums;
+package br.com.hellopet.entities.business.enums;
 
 public enum ProcedimentoCategoria {
     CONSULTA,

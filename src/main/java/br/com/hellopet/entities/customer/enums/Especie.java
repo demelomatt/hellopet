@@ -1,4 +1,4 @@
-package br.com.hellopet.entities.pet.enums;
+package br.com.hellopet.entities.customer.enums;
 
 public enum Especie {
     CACHORRO,

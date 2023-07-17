@@ -1,8 +1,8 @@
-package br.com.hellopet.entities.vet;
+package br.com.hellopet.entities.business;
 
-import br.com.hellopet.entities.pet.Pet;
-import br.com.hellopet.entities.tutor.Tutor;
-import br.com.hellopet.entities.vet.enums.ProcedimentoStatus;
+import br.com.hellopet.entities.customer.Pet;
+import br.com.hellopet.entities.customer.Tutor;
+import br.com.hellopet.entities.business.enums.ProcedimentoStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

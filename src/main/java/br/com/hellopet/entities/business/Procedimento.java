@@ -1,4 +1,4 @@
-package br.com.hellopet.entities.vet;
+package br.com.hellopet.entities.business;
 
 import java.math.BigDecimal;
 
