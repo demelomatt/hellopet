@@ -1,0 +1,15 @@
+server:
+  port: 5000
+
+spring:
+  application:
+    name: HelloPet
+
+  datasource:
+    url: jdbc:h2:mem:hellopet
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+
+  liquibase:
+    change-log: classpath:/migrations/db-changelog-master.yaml
