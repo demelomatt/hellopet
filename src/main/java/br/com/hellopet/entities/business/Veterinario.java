@@ -5,12 +5,10 @@ import br.com.hellopet.entities.customer.enums.Especie;
 import br.com.hellopet.entities.business.enums.ProcedimentoCategoria;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public record Veterinario(
-        List<Especie> especies,
-        List<ProcedimentoCategoria> categorias,
-        List<ProcedimentoTipo> procedimentoTipos,
         Long id,
         String cpf,
         String crmv,
@@ -20,6 +18,13 @@ public record Veterinario(
         String celular,
         Endereco endereco,
         LocalDate dataCadastro,
-        Boolean ativo
+        LocalTime inicioExpediente,
+        LocalTime fimExpediente,
+        LocalTime inicioIntervalo,
+        LocalTime fimIntervalo,
+        Boolean ativo,
+        List<Especie> especies,
+        List<ProcedimentoCategoria> categorias,
+        List<ProcedimentoTipo> procedimentoTipos
 ) {
 }

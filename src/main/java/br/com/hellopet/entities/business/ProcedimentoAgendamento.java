@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 
 public record ProcedimentoAgendamento(
         Procedimento procedimento,
-        LocalDateTime horarioProcedimento,
         Veterinario veterinario,
         Pet pet,
         Tutor tutor,
-        BigDecimal valorTotal,
-        ProcedimentoStatus status
+        ProcedimentoStatus status,
+        LocalDateTime horarioProcedimento,
+        BigDecimal valorTotal
 ) {
 }

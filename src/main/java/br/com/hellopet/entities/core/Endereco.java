@@ -4,7 +4,7 @@ import br.com.hellopet.entities.core.enums.UnidadeFederacao;
 
 public record Endereco(
         String cep,
-        String logradouro,
+        String endereco,
         String numero,
         String bairro,
         String complemento,
