@@ -7,8 +7,8 @@ import java.time.LocalDate;
 
 public record Pet(
         Long id,
-        Especie especie,
         String numeroIdentificacao,
+        Especie especie,
         String nome,
         Genero genero,
         LocalDate dataNascimento,

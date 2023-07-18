@@ -1,0 +1,479 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - createTable:
+            tableName: CLINICA
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable:  false
+              - column:
+                  name: cnpj
+                  type: varchar(14)
+                  constraints:
+                    nullable: false
+                    uniqueConstraint: true
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+                    uniqueConstraint: true
+              - column:
+                  name: telefone
+                  type: varchar(12)
+              - column:
+                  name: celular
+                  type: varchar(13)
+              - column:
+                  name: data_cadastro
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: horario_abertura
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: horario_fechamento
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ativo
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_cep
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_nome
+                  type: varchar(60)
+              - column:
+                  name: endereco_numero
+                  type: varchar(20)
+              - column:
+                  name: endereco_bairro
+                  type: varchar(60)
+              - column:
+                  name: endereco_complemento
+                  type: varchar(20)
+              - column:
+                  name: endereco_cidade
+                  type: varchar(20)
+              - column:
+                  name: endereco_uf
+                  type: int(2)
+        - createTable:
+            tableName: VETERINARIO
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: cpf
+                  type: varchar(11)
+                  constraints:
+                    nullable: false
+                    uniqueConstraint: true
+              - column:
+                  name: crmv
+                  type: varchar(7)
+                  constraints:
+                    nullable: false
+                    uniqueConstraint: true
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+                    uniqueConstraint: true
+              - column:
+                  name: telefone
+                  type: varchar(12)
+              - column:
+                  name: celular
+                  type: varchar(13)
+              - column:
+                  name: data_cadastro
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inicio_expediente
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fim_expediente
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inicio_intervalo
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fim_intervalo
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ativo
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_cep
+                  type: varchar(8)
+              - column:
+                  name: endereco_nome
+                  type: varchar(60)
+              - column:
+                  name: endereco_numero
+                  type: varchar(20)
+              - column:
+                  name: endereco_bairro
+                  type: varchar(60)
+              - column:
+                  name: endereco_complemento
+                  type: varchar(20)
+              - column:
+                  name: endereco_cidade
+                  type: varchar(20)
+              - column:
+                  name: endereco_uf
+                  type: int(2)
+        - createTable:
+            tableName: PROCEDIMENTO_TIPO
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: categoria_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: matheus
+      changes:
+        - createTable:
+            tableName: CLINICA_DIAS_SEMANA
+            columns:
+              - column:
+                  name: dia_semana
+                  type: int(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: clinica_id
+                  type: int
+                  constraints:
+                    nullable: false
+            constraints:
+              primaryKey:
+                columnNames:
+                  - dia_semana
+                  - clinica_id
+        - addForeignKeyConstraint:
+            baseTableName: CLINICA_DIAS_SEMANA
+            baseColumnNames: clinica_id
+            referencedTableName: CLINICA
+            referencedColumnNames: id
+            constraintName: fk_clinica_dias_semana_clinica
+
+  - changeSet:
+      id: 3
+      author: matheus
+      changes:
+        - createTable:
+            tableName: PROCEDIMENTO
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: procedimento_tipo_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: clinica_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: duracao_minutos
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valor
+                  type: numeric
+                  constraints:
+                    nullable: false
+                    defaultValue: 0.0
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO
+            baseColumnNames: procedimento_tipo_id
+            referencedTableName: PROCEDIMENTO_TIPO
+            referencedColumnNames: id
+            constraintName: fk_procedimento_procedimento_tipo
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO
+            baseColumnNames: clinica_id
+            referencedTableName: CLINICA
+            referencedColumnNames: id
+            constraintName: fk_procedimento_clinica
+
+  - changeSet:
+      id: 4
+      author: matheus
+      changes:
+        - createTable:
+            tableName: PROCEDIMENTO_AGENDAMENTO
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: procedimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: veterinario_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pet_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tutor_id
+                  type: int
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: procedimento_status_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: horario_procedimento
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valor
+                  type: numeric
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseColumnNames: procedimento_id
+            referencedTableName: PROCEDIMENTO
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_procedimento
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseColumnNames: veterinario_id
+            referencedTableName: VETERINARIO
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_veterinario
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseColumnNames: pet_id
+            referencedTableName: PET
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_pet
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseColumnNames: tutor_id
+            referencedTableName: TUTOR
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_tutor
+
+  - changeSet:
+      id: 5
+      author: matheus
+      changes:
+        - createTable:
+            tableName: VETERINARIO_CLINICA
+            columns:
+              - column:
+                  name: veterinario_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: clinica_id
+                  type: int
+                  constraints:
+                    nullable: false
+            constraints:
+              primaryKey:
+                columnNames:
+                  - veterinario_id
+                  - clinica_id
+        - addForeignKeyConstraint:
+            baseTableName: VETERINARIO_CLINICA
+            baseColumnNames: veterinario_id
+            referencedTableName: VETERINARIO
+            referencedColumnNames: id
+            constraintName: fk_veterinario_clinica_veterinario
+        - addForeignKeyConstraint:
+            baseTableName: VETERINARIO_CLINICA
+            baseColumnNames: clinica_id
+            referencedTableName: CLINICA
+            referencedColumnNames: id
+            constraintName: fk_veterinario_clinica_clinica
+
+  - changeSet:
+      id: 6
+      author: matheus
+      changes:
+        - createTable:
+            tableName: VETERINARIO_PROCEDIMENTO
+            columns:
+              - column:
+                  name: veterinario_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: procedimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+            constraints:
+              primaryKey:
+                columnNames:
+                  - veterinario_id
+                  - procedimento_id
+        - addForeignKeyConstraint:
+            baseTableName: VETERINARIO_PROCEDIMENTO
+            baseColumnNames: veterinario_id
+            referencedTableName: VETERINARIO
+            referencedColumnNames: id
+            constraintName: fk_veterinario_procedimento_veterinario
+        - addForeignKeyConstraint:
+            baseTableName: VETERINARIO_PROCEDIMENTO
+            baseColumnNames: procedimento_id
+            referencedTableName: PROCEDIMENTO
+            referencedColumnNames: id
+            constraintName: fk_veterinario_procedimento_procedimento
+
+  - changeSet:
+      id: 7
+      author: matheus
+      changes:
+        - createTable:
+            tableName: VETERINARIO_ESPECIE
+            columns:
+              - column:
+                  name: veterinario_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: especie_id
+                  type: int
+                  constraints:
+                    nullable: false
+            constraints:
+              primaryKey:
+                columnNames:
+                  - veterinario_id
+                  - especie_id
+        - addForeignKeyConstraint:
+            baseTableName: VETERINARIO_ESPECIE
+            baseColumnNames: veterinario_id
+            referencedTableName: VETERINARIO
+            referencedColumnNames: id
+            constraintName: fk_veterinario_especie_veterinario
+
+  - changeSet:
+      id: 8
+      author: matheus
+      changes:
+        - createTable:
+            tableName: VETERINARIO_AUSENCIA
+            columns:
+              - column:
+                  name: veterinario_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inicio
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fim
+                  type: datetime
+                  constraints:
+                    nullable: false
+            constraints:
+              primaryKey:
+                columnNames:
+                  - veterinario_id
+                  - inicio
+                  - fim
+        - addForeignKeyConstraint:
+            baseTableName: VETERINARIO_AUSENCIA
+            baseColumnNames: veterinario_id
+            referencedTableName: VETERINARIO
+            referencedColumnNames: id
+            constraintName: fk_veterinario_ausencia_veterinario
