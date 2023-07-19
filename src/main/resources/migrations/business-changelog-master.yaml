@@ -37,6 +37,9 @@ databaseChangeLog:
                   name: celular
                   type: varchar(13)
               - column:
+                  name: data_fundacao
+                  type: date
+              - column:
                   name: data_cadastro
                   type: date
                   constraints:
@@ -303,7 +306,6 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
-
               - column:
                   name: procedimento_status_id
                   type: int
