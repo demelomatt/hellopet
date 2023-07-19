@@ -1,19 +1,21 @@
 package br.com.hellopet.entities.business;
 
+import br.com.hellopet.entities.business.enums.ProcedimentoStatus;
 import br.com.hellopet.entities.customer.Pet;
 import br.com.hellopet.entities.customer.Tutor;
-import br.com.hellopet.entities.business.enums.ProcedimentoStatus;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record ProcedimentoAgendamento(
-        Procedimento procedimento,
-        Veterinario veterinario,
-        Pet pet,
-        Tutor tutor,
-        ProcedimentoStatus status,
-        LocalDateTime horarioProcedimento,
-        BigDecimal valorTotal
-) {
+@Data
+public class ProcedimentoAgendamento {
+    private Long id;
+    private Procedimento procedimento;
+    private Veterinario veterinario;
+    private Pet pet;
+    private Tutor tutor;
+    private ProcedimentoStatus status;
+    private LocalDateTime horarioProcedimento;
+    private BigDecimal valorTotal;
 }

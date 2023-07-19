@@ -1,42 +1,42 @@
 package br.com.hellopet.entities.core.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum UnidadeFederacao {
-    AMAZONAS("Amazonas", "AM", "Manaus"),
-    ALAGOAS("Alagoas", "AL", "Maceió"),
-    ACRE("Acre", "AC", "Rio Branco"),
-    AMAPA("Amapá", "AP", "Macapá"),
-    BAHIA("Bahia", "BA", "Salvador"),
-    PARA("Pará", "PA", "Belém"),
-    MATO_GROSSO("Mato Grosso", "MT", "Cuiabá"),
-    MINAS_GERAIS("Minas Gerais", "MG", "Belo Horizonte"),
-    MATO_GROSSO_DO_SUL("Mato Grosso do Sul", "MS", "Campo Grande"),
-    GOIAS("Goiás", "GO", "Goiânia"),
-    MARANHAO("Maranhão", "MA", "São Luís"),
-    RIO_GRANDE_DO_SUL("Rio Grande do Sul", "RS", "Porto Alegre"),
-    TOCANTINS("Tocantins", "TO", "Palmas"),
-    PIAUI("Piauí", "PI", "Teresina"),
-    SAO_PAULO("São Paulo", "SP", "São Paulo"),
-    RONDONIA("Rondônia", "RO", "Porto Velho"),
-    RORAIMA("Roraima", "RR", "Boa Vista"),
-    PARANA("Paraná", "PR", "Curitiba"),
-    CEARA("Ceará", "CE", "Fortaleza"),
-    PERNAMBUCO("Pernambuco", "PE", "Recife"),
-    SANTA_CATARINA("Santa Catarina", "SC", "Florianópolis"),
-    PARAIBA("Paraíba", "PB", "João Pessoa"),
-    RIO_GRANDE_DO_NORTE("Rio Grande do Norte", "RN", "Natal"),
-    ESPIRITO_SANTO("Espírito Santo", "ES", "Vitória"),
-    RIO_DE_JANEIRO("Rio de Janeiro", "RJ", "Rio de Janeiro"),
-    SERGIPE("Sergipe", "SE", "Aracaju"),
-    DISTRITO_FEDERAL("Distrito Federal", "DF", "Brasília");
+    AC("Acre", 12),
+    AL("Alagoas", 27),
+    AP("Amapá", 16),
+    AM("Amazonas", 13),
+    BA("Bahia", 29),
+    CE("Ceará", 23),
+    DF("Distrito Federal", 53),
+    ES("Espírito Santo", 32),
+    GO("Goiás", 52),
+    MA("Maranhão", 21),
+    MT("Mato Grosso", 51),
+    MS("Mato Grosso do Sul", 50),
+    MG("Minas Gerais", 31),
+    PA("Pará", 15),
+    PB("Paraíba", 25),
+    PR("Paraná", 41),
+    PE("Pernambuco", 26),
+    PI("Piauí", 22),
+    RJ("Rio de Janeiro", 33),
+    RN("Rio Grande do Norte", 24),
+    RO("Rondônia", 11),
+    RS("Rio Grande do Sul", 43),
+    RR("Roraima", 14),
+    SC("Santa Catarina", 42),
+    SE("Sergipe", 28),
+    SP("São Paulo", 35),
+    TO("Tocantins", 17);
 
     private final String nome;
-    private final String sigla;
-    private final String capital;
+    private final int id;
 
-    UnidadeFederacao(final String nome, final String sigla, final String capital) {
+    UnidadeFederacao(String nome, Integer id ) {
         this.nome = nome;
-        this.sigla = sigla;
-        this.capital = capital;
+        this.id = id;
     }
-
 }

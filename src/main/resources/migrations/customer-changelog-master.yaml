@@ -99,6 +99,9 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: data_nascimento
+                  type: date
+              - column:
                   name: peso
                   type: decimal
                   constraints:

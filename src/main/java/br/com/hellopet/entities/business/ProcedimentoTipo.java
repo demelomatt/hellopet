@@ -1,10 +1,11 @@
 package br.com.hellopet.entities.business;
 
 import br.com.hellopet.entities.business.enums.ProcedimentoCategoria;
+import lombok.Data;
 
-public record ProcedimentoTipo(
-        Long id,
-        ProcedimentoCategoria categoria,
-        String nome
-) {
+@Data
+public class ProcedimentoTipo {
+    private Long id;
+    private ProcedimentoCategoria categoria;
+    private String nome;
 }
