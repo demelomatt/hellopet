@@ -2,7 +2,6 @@ package br.com.hellopet.datasources.database.relational.customer.model;
 
 import br.com.hellopet.datasources.database.relational.business.model.ProcedimentoAgendamentoModel;
 import br.com.hellopet.entities.core.enums.Genero;
-import br.com.hellopet.entities.customer.enums.Especie;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,9 +19,9 @@ public class PetModel {
     @Column(name = "numero_identificacao", unique = true)
     private String numeroIdentificacao;
 
-    @Column(name = "especie", nullable = false)
-    @Enumerated()
-    private Especie especie;
+    @ManyToOne
+    @JoinColumn(name = "especie_id", referencedColumnName = "id", nullable = false)
+    private EspecieModel especie;
 
     @Column(name = "nome", nullable = false)
     private String nome;

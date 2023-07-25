@@ -69,6 +69,22 @@ databaseChangeLog:
                   name: endereco_uf
                   type: int(2)
         - createTable:
+            tableName: ESPECIE
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+
+        - createTable:
             tableName: PET
             columns:
               - column:
@@ -84,8 +100,8 @@ databaseChangeLog:
                   constraints:
                     uniqueConstraint: true
               - column:
-                  name: especie
-                  type: int(3)
+                  name: especie_id
+                  type: int
                   constraints:
                     nullable: false
               - column:
@@ -116,6 +132,12 @@ databaseChangeLog:
                   defaultValueBoolean: true
                   constraints:
                     nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: PET
+            baseColumnNames: especie_id
+            referencedTableName: ESPECIE
+            referencedColumnNames: id
+            constraintName: fk_pet_especie
         - createTable:
             tableName: TUTOR_PET
             columns:

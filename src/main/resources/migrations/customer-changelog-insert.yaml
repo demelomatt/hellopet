@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - insert:
+            tableName: ESPECIE
+            columns:
+              - column:
+                  name: nome
+                  value: CACHORRO
+
+        - insert:
+            tableName: ESPECIE
+            columns:
+              - column:
+                  name: nome
+                  value: GATO
+
+        - insert:
+            tableName: ESPECIE
+            columns:
+              - column:
+                  name: nome
+                  value: PORCO DA ÍNDIA

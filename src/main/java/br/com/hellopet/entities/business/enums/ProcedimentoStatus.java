@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum ProcedimentoStatus {
-    ATIVO(0),
-    CONCLUIDO(1),
-    CANCELADO(2);
+    ATIVO(1),
+    CONCLUIDO(2),
+    CANCELADO(3);
 
     private final int id;
 

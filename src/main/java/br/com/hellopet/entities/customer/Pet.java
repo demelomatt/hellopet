@@ -1,10 +1,11 @@
 package br.com.hellopet.entities.customer;
 
+import br.com.hellopet.entities.business.ProcedimentoAgendamento;
 import br.com.hellopet.entities.core.enums.Genero;
-import br.com.hellopet.entities.customer.enums.Especie;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public final class Pet {
@@ -17,4 +18,6 @@ public final class Pet {
     private Double peso;
     private Boolean castrado;
     private Boolean ativo;
+    private List<Tutor> tutores;
+    private List<ProcedimentoAgendamento> agendamentos;
 }

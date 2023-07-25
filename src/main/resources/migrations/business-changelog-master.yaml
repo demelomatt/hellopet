@@ -4,7 +4,22 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: CLINICA
+            tableName: ESTABELECIMENTO_TIPO
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tipo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: ESTABELECIMENTO
             columns:
               - column:
                   name: id
@@ -13,6 +28,11 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable:  false
+              - column:
+                  name: estabelecimento_tipo_id
+                  type: int
+                  constraints:
+                    nullable: false
               - column:
                   name: cnpj
                   type: varchar(14)
@@ -83,8 +103,14 @@ databaseChangeLog:
               - column:
                   name: endereco_uf
                   type: int(2)
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO
+            baseColumnNames: estabelecimento_tipo_id
+            referencedTableName: ESTABELECIMENTO_TIPO
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_tipo
         - createTable:
-            tableName: VETERINARIO
+            tableName: PROFISSIONAL_TIPO
             columns:
               - column:
                   name: id
@@ -94,16 +120,40 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: tipo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: PROFISSIONAL
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_tipo_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
                   name: cpf
                   type: varchar(11)
                   constraints:
                     nullable: false
                     uniqueConstraint: true
               - column:
-                  name: crmv
+                  name: cfmv
                   type: varchar(7)
                   constraints:
-                    nullable: false
+                    uniqueConstraint: true
+              - column:
+                  name: crmv
+                  type: varchar(8)
+                  constraints:
                     uniqueConstraint: true
               - column:
                   name: nome
@@ -174,8 +224,34 @@ databaseChangeLog:
               - column:
                   name: endereco_uf
                   type: int(2)
+        - addForeignKeyConstraint:
+            baseTableName: PROFISSIONAL
+            baseColumnNames: profissional_tipo_id
+            referencedTableName: PROFISSIONAL_TIPO
+            referencedColumnNames: id
+            constraintName: fk_profissional_tipo
+
+  - changeSet:
+      id: 2
+      author: matheus
+      changes:
         - createTable:
-            tableName: PROCEDIMENTO_TIPO
+            tableName: PROCEDIMENTO_CATEGORIA
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: categoria
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: PROCEDIMENTO_GRUPO
             columns:
               - column:
                   name: id
@@ -190,44 +266,42 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: nome
+                  name: grupo
                   type: varchar(60)
                   constraints:
                     nullable: false
-
-  - changeSet:
-      id: 2
-      author: matheus
-      changes:
+        - addForeignKeyConstraint:
+            baseTableName: PROCEDIMENTO_GRUPO
+            baseColumnNames: categoria_id
+            referencedTableName: PROCEDIMENTO_CATEGORIA
+            referencedColumnNames: id
+            constraintName: fk_procedimento_grupo_categoria
         - createTable:
-            tableName: CLINICA_DIAS_SEMANA
+            tableName: PROCEDIMENTO_TIPO
             columns:
               - column:
-                  name: dia_semana
-                  type: int(1)
+                  name: id
+                  type: int
+                  autoIncrement: true
                   constraints:
+                    primaryKey: true
                     nullable: false
               - column:
-                  name: clinica_id
+                  name: grupo_id
                   type: int
                   constraints:
                     nullable: false
-            constraints:
-              primaryKey:
-                columnNames:
-                  - dia_semana
-                  - clinica_id
+              - column:
+                  name: tipo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
         - addForeignKeyConstraint:
-            baseTableName: CLINICA_DIAS_SEMANA
-            baseColumnNames: clinica_id
-            referencedTableName: CLINICA
+            baseTableName: PROCEDIMENTO_TIPO
+            baseColumnNames: grupo_id
+            referencedTableName: PROCEDIMENTO_GRUPO
             referencedColumnNames: id
-            constraintName: fk_clinica_dias_semana_clinica
-
-  - changeSet:
-      id: 3
-      author: matheus
-      changes:
+            constraintName: fk_procedimento_tipo_grupo
         - createTable:
             tableName: PROCEDIMENTO
             columns:
@@ -244,7 +318,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: clinica_id
+                  name: estabelecimento_id
                   type: int
                   constraints:
                     nullable: false
@@ -264,18 +338,13 @@ databaseChangeLog:
             baseColumnNames: procedimento_tipo_id
             referencedTableName: PROCEDIMENTO_TIPO
             referencedColumnNames: id
-            constraintName: fk_procedimento_procedimento_tipo
+            constraintName: fk_procedimento_tipo
         - addForeignKeyConstraint:
             baseTableName: PROCEDIMENTO
-            baseColumnNames: clinica_id
-            referencedTableName: CLINICA
+            baseColumnNames: estabelecimento_id
+            referencedTableName: ESTABELECIMENTO
             referencedColumnNames: id
-            constraintName: fk_procedimento_clinica
-
-  - changeSet:
-      id: 4
-      author: matheus
-      changes:
+            constraintName: fk_procedimento_estabelecimento
         - createTable:
             tableName: PROCEDIMENTO_AGENDAMENTO
             columns:
@@ -292,7 +361,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: veterinario_id
+                  name: profissional_id
                   type: int
                   constraints:
                     nullable: false
@@ -329,10 +398,10 @@ databaseChangeLog:
             constraintName: fk_procedimento_agendamento_procedimento
         - addForeignKeyConstraint:
             baseTableName: PROCEDIMENTO_AGENDAMENTO
-            baseColumnNames: veterinario_id
-            referencedTableName: VETERINARIO
+            baseColumnNames: profissional_id
+            referencedTableName: PROFISSIONAL
             referencedColumnNames: id
-            constraintName: fk_procedimento_agendamento_veterinario
+            constraintName: fk_procedimento_agendamento_profissional
         - addForeignKeyConstraint:
             baseTableName: PROCEDIMENTO_AGENDAMENTO
             baseColumnNames: pet_id
@@ -347,84 +416,109 @@ databaseChangeLog:
             constraintName: fk_procedimento_agendamento_tutor
 
   - changeSet:
+      id: 3
+      author: matheus
+      changes:
+        - createTable:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: dia
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: ESTABELECIMENTO_DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: dia_semana_id
+                  type: int(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO_DIA_SEMANA
+            baseColumnNames: estabelecimento_id
+            referencedTableName: ESTABELECIMENTO
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_dia_semana_estabelecimento
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO_DIA_SEMANA
+            baseColumnNames: dia_semana_id
+            referencedTableName: DIA_SEMANA
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_dia_semana_dia
+  - changeSet:
+      id: 4
+      author: matheus
+      changes:
+        - createTable:
+            tableName: ESTABELECIMENTO_PROFISSIONAL
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO_PROFISSIONAL
+            baseColumnNames: estabelecimento_id
+            referencedTableName: ESTABELECIMENTO
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_profissional_estabelecimento
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO_PROFISSIONAL
+            baseColumnNames: profissional_id
+            referencedTableName: PROFISSIONAL
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_profissional_profissional
+
+  - changeSet:
       id: 5
       author: matheus
       changes:
         - createTable:
-            tableName: VETERINARIO_CLINICA
+            tableName: PROFISSIONAL_ESPECIE
             columns:
               - column:
-                  name: veterinario_id
+                  name: id
                   type: int
+                  autoIncrement: true
                   constraints:
+                    primaryKey: true
                     nullable: false
               - column:
-                  name: clinica_id
-                  type: int
-                  constraints:
-                    nullable: false
-            constraints:
-              primaryKey:
-                columnNames:
-                  - veterinario_id
-                  - clinica_id
-        - addForeignKeyConstraint:
-            baseTableName: VETERINARIO_CLINICA
-            baseColumnNames: veterinario_id
-            referencedTableName: VETERINARIO
-            referencedColumnNames: id
-            constraintName: fk_veterinario_clinica_veterinario
-        - addForeignKeyConstraint:
-            baseTableName: VETERINARIO_CLINICA
-            baseColumnNames: clinica_id
-            referencedTableName: CLINICA
-            referencedColumnNames: id
-            constraintName: fk_veterinario_clinica_clinica
-
-  - changeSet:
-      id: 6
-      author: matheus
-      changes:
-        - createTable:
-            tableName: VETERINARIO_PROCEDIMENTO
-            columns:
-              - column:
-                  name: veterinario_id
-                  type: int
-                  constraints:
-                    nullable: false
-              - column:
-                  name: procedimento_id
-                  type: int
-                  constraints:
-                    nullable: false
-            constraints:
-              primaryKey:
-                columnNames:
-                  - veterinario_id
-                  - procedimento_id
-        - addForeignKeyConstraint:
-            baseTableName: VETERINARIO_PROCEDIMENTO
-            baseColumnNames: veterinario_id
-            referencedTableName: VETERINARIO
-            referencedColumnNames: id
-            constraintName: fk_veterinario_procedimento_veterinario
-        - addForeignKeyConstraint:
-            baseTableName: VETERINARIO_PROCEDIMENTO
-            baseColumnNames: procedimento_id
-            referencedTableName: PROCEDIMENTO
-            referencedColumnNames: id
-            constraintName: fk_veterinario_procedimento_procedimento
-
-  - changeSet:
-      id: 7
-      author: matheus
-      changes:
-        - createTable:
-            tableName: VETERINARIO_ESPECIE
-            columns:
-              - column:
-                  name: veterinario_id
+                  name: profissional_id
                   type: int
                   constraints:
                     nullable: false
@@ -433,27 +527,68 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
-            constraints:
-              primaryKey:
-                columnNames:
-                  - veterinario_id
-                  - especie_id
         - addForeignKeyConstraint:
-            baseTableName: VETERINARIO_ESPECIE
-            baseColumnNames: veterinario_id
-            referencedTableName: VETERINARIO
+            baseTableName: PROFISSIONAL_ESPECIE
+            baseColumnNames: profissional_id
+            referencedTableName: PROFISSIONAL
             referencedColumnNames: id
-            constraintName: fk_veterinario_especie_veterinario
+            constraintName: fk_profissional_especie_profissional
+        - addForeignKeyConstraint:
+            baseTableName: PROFISSIONAL_ESPECIE
+            baseColumnNames: especie_id
+            referencedTableName: ESPECIE
+            referencedColumnNames: id
+            constraintName: fk_profissional_especie_especie
+
+        - createTable:
+            tableName: PROFISSIONAL_PROCEDIMENTO_GRUPO
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: procedimento_grupo_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: PROFISSIONAL_PROCEDIMENTO_GRUPO
+            baseColumnNames: profissional_id
+            referencedTableName: PROFISSIONAL
+            referencedColumnNames: id
+            constraintName: fk_profissional_procedimento_grupo_profissional
+        - addForeignKeyConstraint:
+            baseTableName: PROFISSIONAL_PROCEDIMENTO_GRUPO
+            baseColumnNames: procedimento_grupo_id
+            referencedTableName: PROCEDIMENTO_GRUPO
+            referencedColumnNames: id
+            constraintName: fk_profissional_procedimento_grupo_procedimento_grupo
 
   - changeSet:
-      id: 8
+      id: 6
       author: matheus
       changes:
         - createTable:
-            tableName: VETERINARIO_AUSENCIA
+            tableName: PROFISSIONAL_AUSENCIA
             columns:
               - column:
-                  name: veterinario_id
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
                   type: int
                   constraints:
                     nullable: false
@@ -467,15 +602,46 @@ databaseChangeLog:
                   type: datetime
                   constraints:
                     nullable: false
-            constraints:
-              primaryKey:
-                columnNames:
-                  - veterinario_id
-                  - inicio
-                  - fim
         - addForeignKeyConstraint:
-            baseTableName: VETERINARIO_AUSENCIA
-            baseColumnNames: veterinario_id
-            referencedTableName: VETERINARIO
+            baseTableName: PROFISSIONAL_AUSENCIA
+            baseColumnNames: profissional_id
+            referencedTableName: PROFISSIONAL
             referencedColumnNames: id
-            constraintName: fk_veterinario_ausencia_veterinario
+            constraintName: fk_profissional_ausencia_profissional
+
+  - changeSet:
+      id: 7
+      author: matheus
+      changes:
+        - createTable:
+            tableName: ESTABELECIMENTO_TUTOR
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tutor_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO_TUTOR
+            baseColumnNames: estabelecimento_id
+            referencedTableName: ESTABELECIMENTO
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_tutor_estabelecimento
+        - addForeignKeyConstraint:
+            baseTableName: ESTABELECIMENTO_TUTOR
+            baseColumnNames: tutor_id
+            referencedTableName: TUTOR
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_tutor_tutor

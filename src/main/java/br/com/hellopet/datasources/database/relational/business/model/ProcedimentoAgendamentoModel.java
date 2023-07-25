@@ -22,8 +22,8 @@ public class ProcedimentoAgendamentoModel {
     private ProcedimentoModel procedimento;
 
     @ManyToOne
-    @JoinColumn(name = "veterinario_id", referencedColumnName = "id", nullable = false)
-    private VeterinarioModel veterinario;
+    @JoinColumn(name = "profissional_id", referencedColumnName = "id", nullable = false)
+    private ProfissionalModel profissional;
 
     @ManyToOne
     @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)

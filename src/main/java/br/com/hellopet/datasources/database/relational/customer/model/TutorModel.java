@@ -1,5 +1,6 @@
 package br.com.hellopet.datasources.database.relational.customer.model;
 
+import br.com.hellopet.datasources.database.relational.business.model.EstabelecimentoModel;
 import br.com.hellopet.datasources.database.relational.business.model.ProcedimentoAgendamentoModel;
 import br.com.hellopet.datasources.database.relational.core.model.EnderecoModel;
 import jakarta.persistence.*;
@@ -46,4 +47,7 @@ public class TutorModel {
     @ManyToMany
     @JoinTable(name = "TUTOR_PET", joinColumns = @JoinColumn(name = "tutor_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
     private List<PetModel> pets;
+
+    @ManyToMany(mappedBy = "tutores")
+    private List<EstabelecimentoModel> estabelecimentos;
 }

@@ -1,6 +1,7 @@
 package br.com.hellopet.datasources.database.relational.business.model;
 
 import br.com.hellopet.datasources.database.relational.core.model.EnderecoModel;
+import br.com.hellopet.datasources.database.relational.customer.model.EspecieModel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,16 +11,23 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "VETERINARIO")
-public class VeterinarioModel {
+@Table(name = "PROFISSIONAL")
+public class ProfissionalModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "profissional_tipo_id", referencedColumnName = "id", nullable = false)
+    private ProfissionalTipoModel profissionalTipo;
+
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
-    @Column(name = "crmv", nullable = false, unique = true)
+    @Column(name = "cfmv", unique = true)
+    private String cfmv;
+
+    @Column(name = "crmv", unique = true)
     private String crmv;
 
     @Column(name = "nome", nullable = false)
@@ -55,13 +63,17 @@ public class VeterinarioModel {
     @Embedded
     private EnderecoModel endereco;
 
-    @OneToMany(mappedBy = "veterinario")
+    @OneToMany(mappedBy = "profissional")
     private List<ProcedimentoAgendamentoModel> agendamentos;
 
-    @ManyToMany(mappedBy = "veterinarios")
-    private List<ClinicaModel> clinicas;
+    @ManyToMany(mappedBy = "profissionais")
+    private List<EstabelecimentoModel> estabelecimentos;
 
     @ManyToMany
-    @JoinTable(name = "VETERINARIO_PROCEDIMENTO", joinColumns = @JoinColumn(name = "veterinario_id"), inverseJoinColumns = @JoinColumn(name = "procedimento_id"))
-    private List<ProcedimentoModel> procedimentos;
+    @JoinTable(name = "PROFISSIONAL_ESPECIE", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "especie_id"))
+    private List<EspecieModel> especies;
+
+    @ManyToMany
+    @JoinTable(name = "PROFISSIONAL_PROCEDIMENTO_GRUPO", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "procedimento_grupo_id"))
+    private List<ProcedimentoGrupoModel> procedimentoGrupos;
 }

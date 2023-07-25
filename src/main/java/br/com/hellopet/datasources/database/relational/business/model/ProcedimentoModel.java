@@ -19,8 +19,8 @@ public class ProcedimentoModel {
     private ProcedimentoTipoModel procedimentoTipo;
 
     @ManyToOne
-    @JoinColumn(name = "clinica_id", referencedColumnName = "id", nullable = false)
-    private ClinicaModel clinica;
+    @JoinColumn(name = "estabelecimento_id", referencedColumnName = "id", nullable = false)
+    private EstabelecimentoModel estabelecimento;
 
     @Column(name = "valor", nullable = false)
     private BigDecimal valor;
@@ -30,7 +30,4 @@ public class ProcedimentoModel {
 
     @OneToMany(mappedBy = "procedimento")
     private List<ProcedimentoAgendamentoModel> agendamentos;
-
-    @ManyToMany(mappedBy = "procedimentos")
-    private List<VeterinarioModel> veterinarios;
 }

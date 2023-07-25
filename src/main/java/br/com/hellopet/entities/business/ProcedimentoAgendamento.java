@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class ProcedimentoAgendamento {
     private Long id;
     private Procedimento procedimento;
-    private Veterinario veterinario;
+    private Profissional profissional;
     private Pet pet;
     private Tutor tutor;
     private ProcedimentoStatus status;

@@ -3,6 +3,7 @@ package br.com.hellopet.datasources.database.relational.core.model;
 import br.com.hellopet.entities.core.enums.UnidadeFederacao;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
 
@@ -28,6 +29,6 @@ public class EnderecoModel {
     private String cidade;
 
     @Column(name = "endereco_uf")
-    @Enumerated()
+    @Enumerated(value = EnumType.STRING)
     private UnidadeFederacao uf;
 }
