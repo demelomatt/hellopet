@@ -1,7 +1,8 @@
 package br.com.hellopet.datasources.database.relational.business.model;
 
+import br.com.hellopet.datasources.database.relational.core.model.DiaSemanaModel;
 import br.com.hellopet.datasources.database.relational.core.model.EnderecoModel;
-import br.com.hellopet.datasources.database.relational.customer.model.PetModel;
+import br.com.hellopet.datasources.database.relational.customer.model.TutorModel;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,11 +14,15 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "CLINICA")
-public class ClinicaModel {
+@Table(name = "ESTABELECIMENTO")
+public class EstabelecimentoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "estabelecimento_tipo_id", referencedColumnName = "id", nullable = false)
+    private EstabelecimentoTipoModel estabelecimentoTipo;
 
     @Column(name = "cnpj", nullable = false, unique = true)
     private String cnpj;
@@ -52,11 +57,19 @@ public class ClinicaModel {
     @Embedded
     private EnderecoModel endereco;
 
-    @OneToMany(mappedBy = "clinica")
+    @OneToMany(mappedBy = "estabelecimento")
     private List<ProcedimentoModel> procedimentos;
 
     @ManyToMany
-    @JoinTable(name = "VETERINARIO_CLINICA", joinColumns = @JoinColumn(name = "clinica_id"), inverseJoinColumns = @JoinColumn(name = "veterinario_id"))
-    private List<VeterinarioModel> veterinarios;
+    @JoinTable(name = "ESTABELECIMENTO_DIA_SEMANA", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "dia_semana_id"))
+    private Set<DiaSemanaModel> diasFuncionamento;
+
+    @ManyToMany
+    @JoinTable(name = "ESTABELECIMENTO_PROFISSIONAL", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "profissional_id"))
+    private List<ProfissionalModel> profissionais;
+
+    @ManyToMany
+    @JoinTable(name = "ESTABELECIMENTO_TUTOR", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "tutor_id"))
+    private List<TutorModel> tutores;
 
 }

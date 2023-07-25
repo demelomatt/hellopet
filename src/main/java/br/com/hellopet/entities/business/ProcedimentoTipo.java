@@ -1,11 +1,13 @@
 package br.com.hellopet.entities.business;
 
-import br.com.hellopet.entities.business.enums.ProcedimentoCategoria;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ProcedimentoTipo {
     private Long id;
-    private ProcedimentoCategoria categoria;
-    private String nome;
+    private String tipo;
+    private ProcedimentoGrupo grupo;
+    private List<Procedimento> procedimentos;
 }

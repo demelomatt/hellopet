@@ -1,9 +1,12 @@
 package br.com.hellopet.entities.customer;
 
+import br.com.hellopet.entities.business.Estabelecimento;
+import br.com.hellopet.entities.business.ProcedimentoAgendamento;
 import br.com.hellopet.entities.core.Endereco;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class Tutor {
@@ -16,4 +19,7 @@ public class Tutor {
     private Endereco endereco;
     private LocalDate dataCadastro;
     private Boolean ativo;
+    private List<Pet> pets;
+    private List<ProcedimentoAgendamento> agendamentos;
+    private List<Estabelecimento> estabelecimentos;
 }

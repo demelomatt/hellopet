@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: dia
+                  value: MONDAY
+
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: dia
+                  value: TUESDAY
+
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: dia
+                  value: WEDNESDAY
+
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: dia
+                  value: THURSDAY
+
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: dia
+                  value: FRIDAY
+
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: dia
+                  value: SATURDAY
+
+        - insert:
+            tableName: DIA_SEMANA
+            columns:
+              - column:
+                  name: id
+                  value: 7
+              - column:
+                  name: dia
+                  value: SUNDAY
