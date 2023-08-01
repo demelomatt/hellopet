@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="TUTOR")
+@Table(name="tutor")
 public class TutorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

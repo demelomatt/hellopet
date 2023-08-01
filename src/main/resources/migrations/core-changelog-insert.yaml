@@ -4,71 +4,71 @@ databaseChangeLog:
       author: matheus
       changes:
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 1
               - column:
                   name: dia
-                  value: MONDAY
+                  value: SEGUNDA
 
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 2
               - column:
                   name: dia
-                  value: TUESDAY
+                  value: TERCA
 
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 3
               - column:
                   name: dia
-                  value: WEDNESDAY
+                  value: QUARTA
 
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 4
               - column:
                   name: dia
-                  value: THURSDAY
+                  value: QUINTA
 
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 5
               - column:
                   name: dia
-                  value: FRIDAY
+                  value: SEXTA
 
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 6
               - column:
                   name: dia
-                  value: SATURDAY
+                  value: SABADO
 
         - insert:
-            tableName: DIA_SEMANA
+            tableName: dia_semana
             columns:
               - column:
                   name: id
                   value: 7
               - column:
                   name: dia
-                  value: SUNDAY
+                  value: DOMINGO

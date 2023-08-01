@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="PET")
+@Table(name="pet")
 public class PetModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

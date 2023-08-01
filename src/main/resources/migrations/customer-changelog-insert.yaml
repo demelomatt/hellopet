@@ -4,21 +4,21 @@ databaseChangeLog:
       author: matheus
       changes:
         - insert:
-            tableName: ESPECIE
+            tableName: especie
             columns:
               - column:
                   name: nome
                   value: CACHORRO
 
         - insert:
-            tableName: ESPECIE
+            tableName: especie
             columns:
               - column:
                   name: nome
                   value: GATO
 
         - insert:
-            tableName: ESPECIE
+            tableName: especie
             columns:
               - column:
                   name: nome

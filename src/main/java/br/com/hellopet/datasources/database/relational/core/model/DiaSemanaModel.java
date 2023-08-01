@@ -4,20 +4,17 @@ import br.com.hellopet.datasources.database.relational.business.model.Estabeleci
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.DayOfWeek;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "DIA_SEMANA")
+@Table(name = "dia_semana")
 public class DiaSemanaModel {
     @Id
-    @Enumerated
-    private DayOfWeek id;
+    private Long id;
 
     @Column(name = "dia", nullable = false, unique = true)
-    @Enumerated(value = EnumType.STRING)
-    private DayOfWeek dia;
+    private String dia;
 
     @ManyToMany(mappedBy = "diasFuncionamento")
     private List<EstabelecimentoModel> estabelecimentos;
