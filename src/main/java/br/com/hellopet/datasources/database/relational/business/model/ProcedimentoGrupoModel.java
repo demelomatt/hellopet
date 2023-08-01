@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "PROCEDIMENTO_GRUPO")
+@Table(name = "procedimento_grupo")
 public class ProcedimentoGrupoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +25,4 @@ public class ProcedimentoGrupoModel {
 
     @ManyToMany(mappedBy = "procedimentoGrupos")
     private List<ProfissionalModel> profissionais;
-
 }

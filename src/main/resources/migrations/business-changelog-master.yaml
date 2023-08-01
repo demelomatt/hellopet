@@ -4,7 +4,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: ESTABELECIMENTO_TIPO
+            tableName: estabelecimento_tipo
             columns:
               - column:
                   name: id
@@ -19,7 +19,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - createTable:
-            tableName: ESTABELECIMENTO
+            tableName: estabelecimento
             columns:
               - column:
                   name: id
@@ -104,13 +104,13 @@ databaseChangeLog:
                   name: endereco_uf
                   type: int(2)
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO
+            baseTableName: estabelecimento
             baseColumnNames: estabelecimento_tipo_id
-            referencedTableName: ESTABELECIMENTO_TIPO
+            referencedTableName: estabelecimento_tipo
             referencedColumnNames: id
             constraintName: fk_estabelecimento_tipo
         - createTable:
-            tableName: PROFISSIONAL_TIPO
+            tableName: profissional_tipo
             columns:
               - column:
                   name: id
@@ -125,7 +125,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - createTable:
-            tableName: PROFISSIONAL
+            tableName: profissional
             columns:
               - column:
                   name: id
@@ -225,9 +225,9 @@ databaseChangeLog:
                   name: endereco_uf
                   type: int(2)
         - addForeignKeyConstraint:
-            baseTableName: PROFISSIONAL
+            baseTableName: profissional
             baseColumnNames: profissional_tipo_id
-            referencedTableName: PROFISSIONAL_TIPO
+            referencedTableName: profissional_tipo
             referencedColumnNames: id
             constraintName: fk_profissional_tipo
 
@@ -236,7 +236,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: PROCEDIMENTO_CATEGORIA
+            tableName: procedimento_categoria
             columns:
               - column:
                   name: id
@@ -251,7 +251,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - createTable:
-            tableName: PROCEDIMENTO_GRUPO
+            tableName: procedimento_grupo
             columns:
               - column:
                   name: id
@@ -271,13 +271,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO_GRUPO
+            baseTableName: procedimento_grupo
             baseColumnNames: categoria_id
-            referencedTableName: PROCEDIMENTO_CATEGORIA
+            referencedTableName: procedimento_categoria
             referencedColumnNames: id
             constraintName: fk_procedimento_grupo_categoria
         - createTable:
-            tableName: PROCEDIMENTO_TIPO
+            tableName: procedimento_tipo
             columns:
               - column:
                   name: id
@@ -297,13 +297,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO_TIPO
+            baseTableName: procedimento_tipo
             baseColumnNames: grupo_id
-            referencedTableName: PROCEDIMENTO_GRUPO
+            referencedTableName: procedimento_grupo
             referencedColumnNames: id
             constraintName: fk_procedimento_tipo_grupo
         - createTable:
-            tableName: PROCEDIMENTO
+            tableName: procedimento
             columns:
               - column:
                   name: id
@@ -334,19 +334,19 @@ databaseChangeLog:
                     nullable: false
                     defaultValue: 0.0
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO
+            baseTableName: procedimento
             baseColumnNames: procedimento_tipo_id
-            referencedTableName: PROCEDIMENTO_TIPO
+            referencedTableName: procedimento_tipo
             referencedColumnNames: id
             constraintName: fk_procedimento_tipo
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO
+            baseTableName: procedimento
             baseColumnNames: estabelecimento_id
-            referencedTableName: ESTABELECIMENTO
+            referencedTableName: estabelecimento
             referencedColumnNames: id
             constraintName: fk_procedimento_estabelecimento
         - createTable:
-            tableName: PROCEDIMENTO_AGENDAMENTO
+            tableName: procedimento_agendamento
             columns:
               - column:
                   name: id
@@ -391,27 +391,27 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseTableName: procedimento_agendamento
             baseColumnNames: procedimento_id
-            referencedTableName: PROCEDIMENTO
+            referencedTableName: procedimento
             referencedColumnNames: id
             constraintName: fk_procedimento_agendamento_procedimento
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseTableName: procedimento_agendamento
             baseColumnNames: profissional_id
-            referencedTableName: PROFISSIONAL
+            referencedTableName: profissional
             referencedColumnNames: id
             constraintName: fk_procedimento_agendamento_profissional
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseTableName: procedimento_agendamento
             baseColumnNames: pet_id
-            referencedTableName: PET
+            referencedTableName: pet
             referencedColumnNames: id
             constraintName: fk_procedimento_agendamento_pet
         - addForeignKeyConstraint:
-            baseTableName: PROCEDIMENTO_AGENDAMENTO
+            baseTableName: procedimento_agendamento
             baseColumnNames: tutor_id
-            referencedTableName: TUTOR
+            referencedTableName: tutor
             referencedColumnNames: id
             constraintName: fk_procedimento_agendamento_tutor
 
@@ -420,22 +420,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: DIA_SEMANA
-            columns:
-              - column:
-                  name: id
-                  type: int
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: dia
-                  type: varchar(10)
-                  constraints:
-                    nullable: false
-
-        - createTable:
-            tableName: ESTABELECIMENTO_DIA_SEMANA
+            tableName: estabelecimento_dia_semana
             columns:
               - column:
                   name: id
@@ -455,15 +440,15 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO_DIA_SEMANA
+            baseTableName: estabelecimento_dia_semana
             baseColumnNames: estabelecimento_id
-            referencedTableName: ESTABELECIMENTO
+            referencedTableName: estabelecimento
             referencedColumnNames: id
             constraintName: fk_estabelecimento_dia_semana_estabelecimento
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO_DIA_SEMANA
+            baseTableName: estabelecimento_dia_semana
             baseColumnNames: dia_semana_id
-            referencedTableName: DIA_SEMANA
+            referencedTableName: dia_semana
             referencedColumnNames: id
             constraintName: fk_estabelecimento_dia_semana_dia
   - changeSet:
@@ -471,7 +456,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: ESTABELECIMENTO_PROFISSIONAL
+            tableName: estabelecimento_profissional
             columns:
               - column:
                   name: id
@@ -491,15 +476,15 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO_PROFISSIONAL
+            baseTableName: estabelecimento_profissional
             baseColumnNames: estabelecimento_id
-            referencedTableName: ESTABELECIMENTO
+            referencedTableName: estabelecimento
             referencedColumnNames: id
             constraintName: fk_estabelecimento_profissional_estabelecimento
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO_PROFISSIONAL
+            baseTableName: estabelecimento_profissional
             baseColumnNames: profissional_id
-            referencedTableName: PROFISSIONAL
+            referencedTableName: profissional
             referencedColumnNames: id
             constraintName: fk_estabelecimento_profissional_profissional
 
@@ -508,7 +493,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: PROFISSIONAL_ESPECIE
+            tableName: profissional_especie
             columns:
               - column:
                   name: id
@@ -528,20 +513,20 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: PROFISSIONAL_ESPECIE
+            baseTableName: profissional_especie
             baseColumnNames: profissional_id
-            referencedTableName: PROFISSIONAL
+            referencedTableName: profissional
             referencedColumnNames: id
             constraintName: fk_profissional_especie_profissional
         - addForeignKeyConstraint:
-            baseTableName: PROFISSIONAL_ESPECIE
+            baseTableName: profissional_especie
             baseColumnNames: especie_id
-            referencedTableName: ESPECIE
+            referencedTableName: especie
             referencedColumnNames: id
             constraintName: fk_profissional_especie_especie
 
         - createTable:
-            tableName: PROFISSIONAL_PROCEDIMENTO_GRUPO
+            tableName: profissional_procedimento_grupo
             columns:
               - column:
                   name: id
@@ -561,15 +546,15 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: PROFISSIONAL_PROCEDIMENTO_GRUPO
+            baseTableName: profissional_procedimento_grupo
             baseColumnNames: profissional_id
-            referencedTableName: PROFISSIONAL
+            referencedTableName: profissional
             referencedColumnNames: id
             constraintName: fk_profissional_procedimento_grupo_profissional
         - addForeignKeyConstraint:
-            baseTableName: PROFISSIONAL_PROCEDIMENTO_GRUPO
+            baseTableName: profissional_procedimento_grupo
             baseColumnNames: procedimento_grupo_id
-            referencedTableName: PROCEDIMENTO_GRUPO
+            referencedTableName: procedimento_grupo
             referencedColumnNames: id
             constraintName: fk_profissional_procedimento_grupo_procedimento_grupo
 
@@ -578,7 +563,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: PROFISSIONAL_AUSENCIA
+            tableName: profissional_ausencia
             columns:
               - column:
                   name: id
@@ -603,9 +588,9 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: PROFISSIONAL_AUSENCIA
+            baseTableName: profissional_ausencia
             baseColumnNames: profissional_id
-            referencedTableName: PROFISSIONAL
+            referencedTableName: profissional
             referencedColumnNames: id
             constraintName: fk_profissional_ausencia_profissional
 
@@ -614,7 +599,7 @@ databaseChangeLog:
       author: matheus
       changes:
         - createTable:
-            tableName: ESTABELECIMENTO_TUTOR
+            tableName: estabelecimento_tutor
             columns:
               - column:
                   name: id
@@ -634,13 +619,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO_TUTOR
+            baseTableName: estabelecimento_tutor
             baseColumnNames: estabelecimento_id
-            referencedTableName: ESTABELECIMENTO
+            referencedTableName: estabelecimento
             referencedColumnNames: id
             constraintName: fk_estabelecimento_tutor_estabelecimento
         - addForeignKeyConstraint:
-            baseTableName: ESTABELECIMENTO_TUTOR
+            baseTableName: estabelecimento_tutor
             baseColumnNames: tutor_id
             referencedTableName: TUTOR
             referencedColumnNames: id

@@ -25,6 +25,7 @@ public class Estabelecimento {
     private LocalTime horarioAbertura;
     private LocalTime horarioFechamento;
     private Boolean ativo;
+    private List<Procedimento> procedimentos;
     private Set<DayOfWeek> diasFuncionamento;
     private List<Profissional> profissionais;
     private List<Tutor> tutores;

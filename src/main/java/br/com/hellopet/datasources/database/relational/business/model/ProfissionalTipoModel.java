@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PROFISSIONAL_TIPO")
+@Table(name = "profissional_tipo")
 public class ProfissionalTipoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

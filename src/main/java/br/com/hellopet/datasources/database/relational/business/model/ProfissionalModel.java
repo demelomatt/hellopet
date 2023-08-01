@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "PROFISSIONAL")
+@Table(name = "profissional")
 public class ProfissionalModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

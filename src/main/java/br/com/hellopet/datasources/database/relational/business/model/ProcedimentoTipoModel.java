@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "PROCEDIMENTO_TIPO")
+@Table(name = "procedimento_tipo")
 public class ProcedimentoTipoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
