@@ -29,4 +29,5 @@ public class Profissional {
     private List<Estabelecimento> estabelecimentos;
     private List<Especie> especies;
     private List<ProcedimentoGrupo> procedimentoGrupos;
+    private List<ProfissionalAusencia> ausencias;
 }

@@ -6,9 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface EstabelecimentoTipoRepositoryMapper {
-    /*
-    EstabelecimentoTipo map(EstabelecimentoTipoModel estabelecimentoTipoModel);
     EstabelecimentoTipoModel map(EstabelecimentoTipo estabelecimentoTipo);
+    EstabelecimentoTipo map(EstabelecimentoTipoModel estabelecimentoTipoModel);
 
-     */
 }

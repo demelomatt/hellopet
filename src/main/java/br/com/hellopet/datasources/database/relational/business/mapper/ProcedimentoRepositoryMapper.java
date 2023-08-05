@@ -4,11 +4,14 @@ import br.com.hellopet.datasources.database.relational.business.model.Procedimen
 import br.com.hellopet.entities.business.Procedimento;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(uses = {
+        ProcedimentoTipoRepositoryMapper.class,
+        EstabelecimentoRepositoryMapper.class,
+        ProcedimentoAgendamentoRepositoryMapper.class
+})
 public interface ProcedimentoRepositoryMapper {
-    /*
-    Procedimento map(ProcedimentoModel procedimentoModel);
+
     ProcedimentoModel map(Procedimento procedimento);
 
-     */
+    Procedimento map(ProcedimentoModel procedimentoModel);
 }

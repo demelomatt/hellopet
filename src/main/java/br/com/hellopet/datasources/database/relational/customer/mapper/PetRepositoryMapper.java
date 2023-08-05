@@ -7,9 +7,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(uses = {EspecieRepositoryMapper.class,TutorRepositoryMapper.class, ProcedimentoAgendamentoRepositoryMapper.class})
 public interface PetRepositoryMapper {
-    /*
     Pet map(PetModel petModel);
     PetModel map(Pet pet);
-
-     */
 }

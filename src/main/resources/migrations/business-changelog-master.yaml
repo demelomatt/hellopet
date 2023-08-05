@@ -627,6 +627,6 @@ databaseChangeLog:
         - addForeignKeyConstraint:
             baseTableName: estabelecimento_tutor
             baseColumnNames: tutor_id
-            referencedTableName: TUTOR
+            referencedTableName: tutor
             referencedColumnNames: id
             constraintName: fk_estabelecimento_tutor_tutor

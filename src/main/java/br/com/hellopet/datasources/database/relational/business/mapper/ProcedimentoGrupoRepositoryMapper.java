@@ -7,11 +7,12 @@ import br.com.hellopet.datasources.database.relational.core.mapper.EnderecoRepos
 import br.com.hellopet.entities.business.ProcedimentoGrupo;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = {ProcedimentoCategoriaModel.class, ProfissionalTipoModel.class})
+@Mapper(uses = {
+        ProcedimentoCategoriaRepositoryMapper.class,
+        ProcedimentoTipoRepositoryMapper.class,
+        ProfissionalRepositoryMapper.class
+})
 public interface ProcedimentoGrupoRepositoryMapper {
-    /*
-    ProcedimentoGrupo map(ProcedimentoGrupoModel procedimentoGrupoModel);
     ProcedimentoGrupoModel map(ProcedimentoGrupo procedimentoGrupo);
-
-     */
+    ProcedimentoGrupo map(ProcedimentoGrupoModel procedimentoGrupoModel);
 }
