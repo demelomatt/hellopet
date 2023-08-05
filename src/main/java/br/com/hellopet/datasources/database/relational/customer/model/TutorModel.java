@@ -45,7 +45,7 @@ public class TutorModel {
     private List<ProcedimentoAgendamentoModel> agendamentos;
 
     @ManyToMany
-    @JoinTable(name = "TUTOR_PET", joinColumns = @JoinColumn(name = "tutor_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
+    @JoinTable(name = "tutor_pet", joinColumns = @JoinColumn(name = "tutor_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
     private List<PetModel> pets;
 
     @ManyToMany(mappedBy = "tutores")

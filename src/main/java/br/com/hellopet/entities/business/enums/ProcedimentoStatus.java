@@ -13,4 +13,13 @@ public enum ProcedimentoStatus {
     private ProcedimentoStatus(int id) {
         this.id = id;
     }
+
+    public static ProcedimentoStatus fromId(int id) {
+        for (ProcedimentoStatus status : values()) {
+            if (status.getId() == id) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Invalid Status id: " + id);
+    }
 }

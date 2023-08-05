@@ -66,14 +66,17 @@ public class ProfissionalModel {
     @OneToMany(mappedBy = "profissional")
     private List<ProcedimentoAgendamentoModel> agendamentos;
 
+    @OneToMany(mappedBy = "profissional")
+    private List<ProfissionalAusenciaModel> ausencias;
+
     @ManyToMany(mappedBy = "profissionais")
     private List<EstabelecimentoModel> estabelecimentos;
 
     @ManyToMany
-    @JoinTable(name = "PROFISSIONAL_ESPECIE", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "especie_id"))
+    @JoinTable(name = "profissional_especie", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "especie_id"))
     private List<EspecieModel> especies;
 
     @ManyToMany
-    @JoinTable(name = "PROFISSIONAL_PROCEDIMENTO_GRUPO", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "procedimento_grupo_id"))
+    @JoinTable(name = "profissional_procedimento_grupo", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "procedimento_grupo_id"))
     private List<ProcedimentoGrupoModel> procedimentoGrupos;
 }

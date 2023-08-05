@@ -61,15 +61,15 @@ public class EstabelecimentoModel {
     private List<ProcedimentoModel> procedimentos;
 
     @ManyToMany
-    @JoinTable(name = "ESTABELECIMENTO_DIA_SEMANA", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "dia_semana_id"))
+    @JoinTable(name = "estabelecimento_dia_semana", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "dia_semana_id"))
     private Set<DiaSemanaModel> diasFuncionamento;
 
     @ManyToMany
-    @JoinTable(name = "ESTABELECIMENTO_PROFISSIONAL", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "profissional_id"))
+    @JoinTable(name = "estabelecimento_profissional", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "profissional_id"))
     private List<ProfissionalModel> profissionais;
 
     @ManyToMany
-    @JoinTable(name = "ESTABELECIMENTO_TUTOR", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "tutor_id"))
+    @JoinTable(name = "estabelecimento_tutor", joinColumns = @JoinColumn(name = "estabelecimento_id"), inverseJoinColumns = @JoinColumn(name = "tutor_id"))
     private List<TutorModel> tutores;
 
 }

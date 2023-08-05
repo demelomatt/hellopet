@@ -1,5 +1,6 @@
 package br.com.hellopet.datasources.database.relational.business.model;
 
+import br.com.hellopet.datasources.database.relational.core.mapper.ProcedimentoStatusConverter;
 import br.com.hellopet.datasources.database.relational.customer.model.PetModel;
 import br.com.hellopet.datasources.database.relational.customer.model.TutorModel;
 import br.com.hellopet.entities.business.enums.ProcedimentoStatus;
@@ -34,7 +35,7 @@ public class ProcedimentoAgendamentoModel {
     private TutorModel tutor;
 
     @Column(name = "procedimento_status_id", nullable = false)
-    @Enumerated()
+    @Convert(converter = ProcedimentoStatusConverter.class)
     private ProcedimentoStatus status;
 
     @Column(name = "horario_procedimento", nullable = false)

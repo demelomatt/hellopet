@@ -6,9 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface ProfissionalTipoRepositoryMapper {
-    /*
-    ProfissionalTipo map(ProfissionalTipoModel profissionalTipoModel);
     ProfissionalTipoModel map(ProfissionalTipo profissionalTipo);
-
-     */
+    ProfissionalTipo map(ProfissionalTipoModel profissionalTipoModel);
 }

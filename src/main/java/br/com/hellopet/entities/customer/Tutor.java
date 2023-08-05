@@ -21,5 +21,4 @@ public class Tutor {
     private Boolean ativo;
     private List<Pet> pets;
     private List<ProcedimentoAgendamento> agendamentos;
-    private List<Estabelecimento> estabelecimentos;
 }

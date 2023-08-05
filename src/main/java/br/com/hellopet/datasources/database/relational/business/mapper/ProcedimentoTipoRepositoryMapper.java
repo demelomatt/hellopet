@@ -4,11 +4,11 @@ import br.com.hellopet.datasources.database.relational.business.model.Profission
 import br.com.hellopet.entities.business.ProfissionalTipo;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(uses = {
+        ProcedimentoGrupoRepositoryMapper.class,
+        ProcedimentoRepositoryMapper.class
+})
 public interface ProcedimentoTipoRepositoryMapper {
-    /*
-    ProfissionalTipo map(ProfissionalTipoModel profissionalTipoModel);
     ProfissionalTipoModel map(ProfissionalTipo profissionalTipo);
-
-     */
+    ProfissionalTipo map(ProfissionalTipoModel profissionalTipoModel);
 }
