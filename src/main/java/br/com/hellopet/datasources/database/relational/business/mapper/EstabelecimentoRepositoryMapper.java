@@ -7,6 +7,7 @@ import br.com.hellopet.entities.business.Estabelecimento;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = {
         EstabelecimentoTipoRepositoryMapper.class,
@@ -16,6 +17,8 @@ import org.mapstruct.Mapping;
         ProfissionalRepositoryMapper.class
 })
 public interface EstabelecimentoRepositoryMapper {
+    EstabelecimentoRepositoryMapper INSTANCE = Mappers.getMapper(EstabelecimentoRepositoryMapper.class);
+
     @Mapping(target = "tutores", ignore = true)
     //@Mapping(target = "diasFuncionamento", ignore = true)
     EstabelecimentoModel map(Estabelecimento estabelecimento);

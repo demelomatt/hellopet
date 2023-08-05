@@ -5,9 +5,12 @@ import br.com.hellopet.entities.core.DiaSemana;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface DiaSemanaRepositoryMapper {
+    DiaSemanaRepositoryMapper INSTANCE = Mappers.getMapper(DiaSemanaRepositoryMapper.class);
+
     @Mapping(target = "estabelecimentos", ignore = true)
     DiaSemanaModel map(DiaSemana diaSemana);
 

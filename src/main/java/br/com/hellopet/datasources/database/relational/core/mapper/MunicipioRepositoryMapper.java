@@ -13,6 +13,6 @@ public interface MunicipioRepositoryMapper {
     MunicipioRepositoryMapper INSTANCE = Mappers.getMapper(MunicipioRepositoryMapper.class);
 
     Municipio map(MunicipioModel municipioModel);
-    List<Municipio> map(List<MunicipioModel> municipiosModel);
 
+    List<Municipio> map(List<MunicipioModel> municipiosModel);
 }

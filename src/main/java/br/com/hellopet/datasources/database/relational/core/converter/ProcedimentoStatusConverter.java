@@ -1,4 +1,4 @@
-package br.com.hellopet.datasources.database.relational.core.mapper;
+package br.com.hellopet.datasources.database.relational.core.converter;
 
 import br.com.hellopet.entities.business.enums.ProcedimentoStatus;
 import jakarta.persistence.AttributeConverter;
