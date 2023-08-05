@@ -1,6 +1,6 @@
 package br.com.hellopet.datasources.database.relational.core.model;
 
-import br.com.hellopet.datasources.database.relational.core.mapper.UnidadeFederacaoConverter;
+import br.com.hellopet.datasources.database.relational.core.converter.UnidadeFederacaoConverter;
 import br.com.hellopet.entities.core.enums.UnidadeFederacao;
 import jakarta.persistence.*;
 import lombok.Data;

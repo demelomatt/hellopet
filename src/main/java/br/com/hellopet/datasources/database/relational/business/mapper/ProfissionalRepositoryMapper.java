@@ -5,6 +5,7 @@ import br.com.hellopet.datasources.database.relational.core.mapper.EnderecoRepos
 import br.com.hellopet.datasources.database.relational.customer.mapper.EspecieRepositoryMapper;
 import br.com.hellopet.entities.business.Profissional;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = {
         EnderecoRepositoryMapper.class,
@@ -15,6 +16,9 @@ import org.mapstruct.Mapper;
         ProcedimentoGrupoRepositoryMapper.class
 })
 public interface ProfissionalRepositoryMapper {
+    ProfissionalRepositoryMapper INSTANCE = Mappers.getMapper(ProfissionalRepositoryMapper.class);
+
     ProfissionalModel map(Profissional profissional);
+
     Profissional map(ProfissionalModel profissionalModel);
 }

@@ -1,6 +1,6 @@
 package br.com.hellopet.datasources.database.relational.business.model;
 
-import br.com.hellopet.datasources.database.relational.core.mapper.ProcedimentoStatusConverter;
+import br.com.hellopet.datasources.database.relational.core.converter.ProcedimentoStatusConverter;
 import br.com.hellopet.datasources.database.relational.customer.model.PetModel;
 import br.com.hellopet.datasources.database.relational.customer.model.TutorModel;
 import br.com.hellopet.entities.business.enums.ProcedimentoStatus;
