@@ -38,7 +38,7 @@ public class TutorModel {
     @Column(name = "data_cadastro", nullable = false)
     private LocalDate dataCadastro;
 
-    @Column(name = "ativo", nullable = false)
+    @Column(name = "ativo")
     private Boolean ativo;
 
     @OneToMany(mappedBy = "tutor")

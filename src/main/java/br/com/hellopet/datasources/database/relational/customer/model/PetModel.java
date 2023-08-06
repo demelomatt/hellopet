@@ -33,7 +33,7 @@ public class PetModel {
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @Column(name = "peso", precision = 3, scale = 2)
+    @Column(name = "peso")
     private Double peso;
 
     @Column(name = "castrado")
