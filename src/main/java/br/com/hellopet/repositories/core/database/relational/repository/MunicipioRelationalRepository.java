@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class MunicipioRelationalRepository implements MunicipioRepository  {
 
-    private final static MunicipioRepositoryMapper MAPPER = MunicipioRepositoryMapper.INSTANCE;
+    private static final MunicipioRepositoryMapper MAPPER = MunicipioRepositoryMapper.INSTANCE;
     private final MunicipioJpaRepository jpaRepository;
 
     public MunicipioRelationalRepository(MunicipioJpaRepository jpaRepository) {
