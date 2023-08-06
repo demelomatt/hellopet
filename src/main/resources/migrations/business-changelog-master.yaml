@@ -38,7 +38,7 @@ databaseChangeLog:
                   type: varchar(14)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: nome
                   type: varchar(60)
@@ -49,7 +49,7 @@ databaseChangeLog:
                   type: varchar(60)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: telefone
                   type: varchar(12)
@@ -102,7 +102,7 @@ databaseChangeLog:
                   type: varchar(20)
               - column:
                   name: endereco_uf
-                  type: int(2)
+                  type: int
         - addForeignKeyConstraint:
             baseTableName: estabelecimento
             baseColumnNames: estabelecimento_tipo_id
@@ -144,17 +144,17 @@ databaseChangeLog:
                   type: varchar(11)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: cfmv
                   type: varchar(7)
                   constraints:
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: crmv
                   type: varchar(8)
                   constraints:
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: nome
                   type: varchar(60)
@@ -165,7 +165,7 @@ databaseChangeLog:
                   type: varchar(60)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: telefone
                   type: varchar(12)
@@ -223,7 +223,7 @@ databaseChangeLog:
                   type: varchar(20)
               - column:
                   name: endereco_uf
-                  type: int(2)
+                  type: int
         - addForeignKeyConstraint:
             baseTableName: profissional
             baseColumnNames: profissional_tipo_id
@@ -431,7 +431,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: dia_semana_id
-                  type: int(1)
+                  type: int
                   constraints:
                     nullable: false
               - column:

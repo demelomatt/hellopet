@@ -1,14 +1,12 @@
 package br.com.hellopet.usecases.customer;
 
-import br.com.hellopet.common.exception.NotFoundException;
+import br.com.hellopet.usecases.common.exception.NotFoundException;
 import br.com.hellopet.entities.customer.Tutor;
 import br.com.hellopet.repositories.customer.TutorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class TutorUseCase {
