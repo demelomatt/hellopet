@@ -1,4 +1,4 @@
-package br.com.hellopet.common.exception;
+package br.com.hellopet.usecases.common.exception;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException() {

@@ -1,6 +1,6 @@
 package br.com.hellopet.usecases.core;
 
-import br.com.hellopet.common.exception.NotFoundException;
+import br.com.hellopet.usecases.common.exception.NotFoundException;
 import br.com.hellopet.entities.core.Municipio;
 import br.com.hellopet.entities.core.enums.UnidadeFederacao;
 import br.com.hellopet.repositories.core.MunicipioRepository;

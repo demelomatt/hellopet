@@ -26,8 +26,6 @@ databaseChangeLog:
               - column:
                   name: ibge
                   type: int(7)
-                  constraints:
-                    uniqueConstraint: true
         - createTable:
             tableName: dia_semana
             columns:
@@ -42,4 +40,4 @@ databaseChangeLog:
                   type: varchar(13)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true

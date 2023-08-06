@@ -18,7 +18,7 @@ databaseChangeLog:
                   type: varchar(11)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: nome
                   type: varchar(60)
@@ -29,7 +29,7 @@ databaseChangeLog:
                   type: varchar(60)
                   constraints:
                     nullable: false
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: telefone
                   type: varchar(12)
@@ -45,8 +45,8 @@ databaseChangeLog:
                   name: ativo
                   type: boolean
                   defaultValueBoolean: true
-                  #constraints:
-                   # nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: endereco_cep
                   type: varchar(8)
@@ -97,7 +97,7 @@ databaseChangeLog:
                   name: numero_identificacao
                   type: varchar(30)
                   constraints:
-                    uniqueConstraint: true
+                    unique: true
               - column:
                   name: especie_id
                   type: int

@@ -20,6 +20,6 @@ public class MunicipioModel {
     @Convert(converter = UnidadeFederacaoConverter.class)
     private UnidadeFederacao uf;
 
-    @Column(name = "ibge", nullable = false, length = 7, unique = true)
+    @Column(name = "ibge", nullable = false, length = 7)
     private Integer ibge;
 }

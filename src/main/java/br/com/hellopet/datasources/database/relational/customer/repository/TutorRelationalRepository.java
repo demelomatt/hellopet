@@ -1,17 +1,18 @@
 package br.com.hellopet.datasources.database.relational.customer.repository;
 
-import br.com.hellopet.common.exception.NotFoundException;
+import br.com.hellopet.datasources.database.relational.common.exception.EntityNotFoundException;
+import br.com.hellopet.datasources.database.relational.common.exception.InvalidDataException;
 import br.com.hellopet.datasources.database.relational.customer.mapper.TutorRepositoryMapper;
 import br.com.hellopet.datasources.database.relational.customer.model.TutorModel;
 import br.com.hellopet.entities.customer.Tutor;
 import br.com.hellopet.repositories.customer.TutorRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -28,7 +29,11 @@ public class TutorRelationalRepository implements TutorRepository {
     @Override
     public Tutor create(Tutor tutor) {
         TutorModel tutorModel = repositoryMapper.map(tutor);
-        return repositoryMapper.map(jpaRepository.save(tutorModel));
+        try {
+            return repositoryMapper.map(jpaRepository.save(tutorModel));
+        } catch (DataIntegrityViolationException e) {
+            throw new InvalidDataException("Dados informados inválidos. Verifique os atributos.");
+        }
     }
 
     @Transactional
@@ -37,8 +42,12 @@ public class TutorRelationalRepository implements TutorRepository {
         var tutorOptional = jpaRepository.findById(tutor.getId());
         if(tutorOptional.isPresent()) {
             repositoryMapper.update(tutor, tutorOptional.get());
-            var tutorModel = jpaRepository.save(tutorOptional.get());
-            return repositoryMapper.map(tutorModel);
+            try{
+                var tutorModel = jpaRepository.save(tutorOptional.get());
+                return repositoryMapper.map(tutorModel);
+            } catch (DataIntegrityViolationException e) {
+                throw new InvalidDataException("Dados informados inválidos. Verifique se os atributos não estão duplicados.");
+            }
         }
         return null;
     }
@@ -47,8 +56,12 @@ public class TutorRelationalRepository implements TutorRepository {
     @Override
     public void delete(Long id) {
         var tutorModel = jpaRepository.findById(id);
-        tutorModel.orElseThrow(NotFoundException::new);
-        tutorModel.get().setAtivo(false);
+        tutorModel.orElseThrow(EntityNotFoundException::new);
+        if (tutorModel.get().getAtivo()) {
+            tutorModel.get().setAtivo(false);
+        } else {
+            throw new EntityNotFoundException("Esse tutor já se encontra desativado.");
+        }
     }
 
     @Override
