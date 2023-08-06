@@ -45,8 +45,8 @@ databaseChangeLog:
                   name: ativo
                   type: boolean
                   defaultValueBoolean: true
-                  constraints:
-                    nullable: false
+                  #constraints:
+                   # nullable: false
               - column:
                   name: endereco_cep
                   type: varchar(8)

@@ -1,4 +1,4 @@
-package br.com.hellopet.controllers.rest.core.model;
+package br.com.hellopet.api.rest.core.model;
 
 public record MunicipioResponse(
         Long id,

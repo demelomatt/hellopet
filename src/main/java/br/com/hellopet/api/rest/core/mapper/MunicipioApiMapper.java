@@ -1,6 +1,6 @@
-package br.com.hellopet.controllers.rest.core.mapper;
+package br.com.hellopet.api.rest.core.mapper;
 
-import br.com.hellopet.controllers.rest.core.model.MunicipioResponse;
+import br.com.hellopet.api.rest.core.model.MunicipioResponse;
 import br.com.hellopet.entities.core.Municipio;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -12,5 +12,6 @@ public interface MunicipioApiMapper {
     MunicipioApiMapper INSTANCE = Mappers.getMapper(MunicipioApiMapper.class);
 
     MunicipioResponse map(Municipio municipio);
+
     List<MunicipioResponse> map(List<Municipio> municipios);
 }

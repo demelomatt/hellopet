@@ -1,4 +1,4 @@
-package br.com.hellopet.controllers.rest;
+package br.com.hellopet.api.rest;
 
 import br.com.hellopet.common.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
