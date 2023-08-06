@@ -20,11 +20,11 @@ public class MunicipioUseCase {
     public List<Municipio> list(Optional<String> uf, Optional<String> municipio) {
 
         if (uf.isPresent() && municipio.isPresent()) {
-            return municipioRepository.list(getUf(uf), municipio.get());
+            return municipioRepository.list(getUf(uf.get()), municipio.get());
         }
 
         if (uf.isPresent()) {
-            return municipioRepository.list(getUf(uf));
+            return municipioRepository.list(getUf(uf.get()));
         }
 
         if (municipio.isPresent()) {
@@ -38,12 +38,11 @@ public class MunicipioUseCase {
         return municipioRepository.get(id).orElseThrow(NotFoundException::new);
     }
 
-    private UnidadeFederacao getUf(Optional<String> uf) {
+    private UnidadeFederacao getUf(String uf) {
         try {
-            return UnidadeFederacao.valueOf(uf.get().toUpperCase());
+            return UnidadeFederacao.valueOf(uf.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new NotFoundException();
         }
-
     }
 }

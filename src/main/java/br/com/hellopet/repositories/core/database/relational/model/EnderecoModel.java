@@ -11,8 +11,8 @@ public class EnderecoModel {
     @Column(name = "endereco_cep", nullable = false)
     private String cep;
 
-    @Column(name = "endereco_nome")
-    private String endereco;
+    @Column(name = "endereco_logradouro")
+    private String logradouro;
 
     @Column(name = "endereco_numero")
     private String numero;

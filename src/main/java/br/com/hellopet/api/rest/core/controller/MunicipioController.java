@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class MunicipioController {
-    private final MunicipioApiMapper mapper = MunicipioApiMapper.INSTANCE;
+    private static final MunicipioApiMapper MAPPER = MunicipioApiMapper.INSTANCE;
     private final MunicipioUseCase municipioUseCase;
 
     public MunicipioController(MunicipioUseCase municipioUseCase) {
@@ -21,7 +21,7 @@ public class MunicipioController {
     @GetMapping("/{id}")
     public ResponseEntity<MunicipioResponse> get(Long id) {
         var municipio = municipioUseCase.get(id);
-        return ResponseEntity.ok(mapper.map(municipio));
+        return ResponseEntity.ok(MAPPER.map(municipio));
     }
 
     @GetMapping
@@ -30,7 +30,7 @@ public class MunicipioController {
             @RequestParam(required = false) Optional<String> municipio
     ) {
         var municipios = municipioUseCase.list(uf, municipio)
-                .stream().map(mapper::map).toList();
+                .stream().map(MAPPER::map).toList();
         return ResponseEntity.ok(municipios);
     }
 

@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public class MunicipioRelationalRepository implements MunicipioRepository  {
 
+    private final static MunicipioRepositoryMapper MAPPER = MunicipioRepositoryMapper.INSTANCE;
     private final MunicipioJpaRepository jpaRepository;
-    private final MunicipioRepositoryMapper repositoryMapper = MunicipioRepositoryMapper.INSTANCE;
 
     public MunicipioRelationalRepository(MunicipioJpaRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
@@ -23,7 +23,7 @@ public class MunicipioRelationalRepository implements MunicipioRepository  {
     public List<Municipio> list() {
         return jpaRepository.findAll()
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .toList();
     }
 
@@ -31,7 +31,7 @@ public class MunicipioRelationalRepository implements MunicipioRepository  {
     public List<Municipio> list(UnidadeFederacao uf) {
         return jpaRepository.findAllByUf(uf)
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .toList();
     }
 
@@ -39,7 +39,7 @@ public class MunicipioRelationalRepository implements MunicipioRepository  {
     public List<Municipio> list(String municipio) {
         return jpaRepository.findByNomeContainingIgnoreCase(municipio)
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .toList();
     }
 
@@ -47,7 +47,7 @@ public class MunicipioRelationalRepository implements MunicipioRepository  {
     public List<Municipio> list(UnidadeFederacao uf, String municipio) {
         return jpaRepository.findByUfAndNomeContainingIgnoreCase(uf, municipio)
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .toList();
     }
 
@@ -55,7 +55,7 @@ public class MunicipioRelationalRepository implements MunicipioRepository  {
     public Optional<Municipio> get(Long id) {
         return jpaRepository.findById(id)
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .findFirst();
     }
 }

@@ -14,5 +14,5 @@ public interface EnderecoApiMapper {
 
     Endereco map(EnderecoRequest enderecoRequest);
 
-    EnderecoResponse map(Endereco tutor);
+    EnderecoResponse map(Endereco endereco);
 }

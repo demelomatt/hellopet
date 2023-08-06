@@ -12,6 +12,4 @@ public interface MunicipioApiMapper {
     MunicipioApiMapper INSTANCE = Mappers.getMapper(MunicipioApiMapper.class);
 
     MunicipioResponse map(Municipio municipio);
-
-    List<MunicipioResponse> map(List<Municipio> municipios);
 }

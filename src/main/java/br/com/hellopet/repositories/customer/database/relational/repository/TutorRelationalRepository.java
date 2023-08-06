@@ -18,7 +18,7 @@ import java.util.Optional;
 @Repository
 public class TutorRelationalRepository implements TutorRepository {
 
-    private final TutorRepositoryMapper repositoryMapper = TutorRepositoryMapper.INSTANCE;
+    private static final TutorRepositoryMapper MAPPER = TutorRepositoryMapper.INSTANCE;
     private final TutorJpaRepository jpaRepository;
 
     public TutorRelationalRepository(TutorJpaRepository jpaRepository) {
@@ -28,9 +28,9 @@ public class TutorRelationalRepository implements TutorRepository {
     @Transactional
     @Override
     public Tutor create(Tutor tutor) {
-        TutorModel tutorModel = repositoryMapper.map(tutor);
+        TutorModel tutorModel = MAPPER.map(tutor);
         try {
-            return repositoryMapper.map(jpaRepository.save(tutorModel));
+            return MAPPER.map(jpaRepository.save(tutorModel));
         } catch (DataIntegrityViolationException e) {
             throw new InvalidDataException("Dados informados inválidos. Verifique os atributos.");
         }
@@ -41,10 +41,10 @@ public class TutorRelationalRepository implements TutorRepository {
     public Tutor update(Tutor tutor) {
         var tutorOptional = jpaRepository.findById(tutor.getId());
         if(tutorOptional.isPresent()) {
-            repositoryMapper.update(tutor, tutorOptional.get());
+            MAPPER.update(tutor, tutorOptional.get());
             try{
                 var tutorModel = jpaRepository.save(tutorOptional.get());
-                return repositoryMapper.map(tutorModel);
+                return MAPPER.map(tutorModel);
             } catch (DataIntegrityViolationException e) {
                 throw new InvalidDataException("Dados informados inválidos. Verifique se os atributos não estão duplicados.");
             }
@@ -68,7 +68,7 @@ public class TutorRelationalRepository implements TutorRepository {
     public Optional<Tutor> get(Long id) {
         return jpaRepository.findById(id)
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .findFirst();
     }
 
@@ -76,7 +76,7 @@ public class TutorRelationalRepository implements TutorRepository {
     public Page<Tutor> list(Pageable pageable) {
         var tutores = jpaRepository.findAllByAtivoTrue(pageable)
                 .stream()
-                .map(repositoryMapper::map)
+                .map(MAPPER::map)
                 .toList();
         return new PageImpl<>(tutores);
     }

@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @RequestMapping("customer/tutores")
 public class TutorController {
-    private final TutorApiMapper tutorMapper = TutorApiMapper.INSTANCE;
+    private static final TutorApiMapper MAPPER = TutorApiMapper.INSTANCE;
     private final TutorUseCase tutorUseCase;
 
     public TutorController(TutorUseCase tutorUseCase) {
@@ -25,16 +25,16 @@ public class TutorController {
             @RequestBody TutorRequest tutorRequest,
             UriComponentsBuilder uriBuilder
     ) {
-        var tutor = tutorUseCase.create(tutorMapper.map(tutorRequest));
+        var tutor = tutorUseCase.create(MAPPER.map(tutorRequest));
 
         var uri = uriBuilder.path("/customer/tutores/{id}").buildAndExpand(tutor.getId()).toUri();
-        return ResponseEntity.created(uri).body(tutorMapper.map(tutor));
+        return ResponseEntity.created(uri).body(MAPPER.map(tutor));
     }
 
     @PutMapping
     public ResponseEntity<TutorResponse> update(@RequestBody TutorRequest tutorRequest) {
-        var tutor = tutorUseCase.update(tutorMapper.map(tutorRequest));
-        return ResponseEntity.ok(tutorMapper.map(tutor));
+        var tutor = tutorUseCase.update(MAPPER.map(tutorRequest));
+        return ResponseEntity.ok(MAPPER.map(tutor));
     }
 
     @DeleteMapping("/{id}")
@@ -46,7 +46,7 @@ public class TutorController {
     @GetMapping("/{id}")
     public ResponseEntity<TutorResponse> get(@PathVariable Long id) {
         var tutor = tutorUseCase.get(id);
-        return ResponseEntity.ok(tutorMapper.map(tutor));
+        return ResponseEntity.ok(MAPPER.map(tutor));
     }
 
     @GetMapping
@@ -58,7 +58,7 @@ public class TutorController {
     ) {
         var tutores = tutorUseCase.list(pageNumber, pageSize, sortOrder, sortField)
                 .stream()
-                .map(tutorMapper::map)
+                .map(MAPPER::map)
                 .toList();
         return ResponseEntity.ok(new PageImpl<>(tutores));
     }

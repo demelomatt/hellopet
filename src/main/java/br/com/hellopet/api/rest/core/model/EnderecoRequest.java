@@ -2,7 +2,7 @@ package br.com.hellopet.api.rest.core.model;
 
 public record EnderecoRequest(
         String cep,
-        String endereco,
+        String logradouro,
         String numero,
         String bairro,
         String complemento,
