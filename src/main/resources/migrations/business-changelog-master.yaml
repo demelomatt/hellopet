@@ -1,0 +1,632 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - createTable:
+            tableName: estabelecimento_tipo
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tipo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: estabelecimento
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable:  false
+              - column:
+                  name: estabelecimento_tipo_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cnpj
+                  type: varchar(14)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: telefone
+                  type: varchar(12)
+              - column:
+                  name: celular
+                  type: varchar(13)
+              - column:
+                  name: data_fundacao
+                  type: date
+              - column:
+                  name: data_cadastro
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: horario_abertura
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: horario_fechamento
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ativo
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_cep
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_nome
+                  type: varchar(60)
+              - column:
+                  name: endereco_numero
+                  type: varchar(20)
+              - column:
+                  name: endereco_bairro
+                  type: varchar(60)
+              - column:
+                  name: endereco_complemento
+                  type: varchar(20)
+              - column:
+                  name: endereco_cidade
+                  type: varchar(20)
+              - column:
+                  name: endereco_uf
+                  type: int
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento
+            baseColumnNames: estabelecimento_tipo_id
+            referencedTableName: estabelecimento_tipo
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_tipo
+        - createTable:
+            tableName: profissional_tipo
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tipo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: profissional
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_tipo_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cpf
+                  type: varchar(11)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: cfmv
+                  type: varchar(7)
+                  constraints:
+                    unique: true
+              - column:
+                  name: crmv
+                  type: varchar(8)
+                  constraints:
+                    unique: true
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: telefone
+                  type: varchar(12)
+              - column:
+                  name: celular
+                  type: varchar(13)
+              - column:
+                  name: data_cadastro
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inicio_expediente
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fim_expediente
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inicio_intervalo
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fim_intervalo
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ativo
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_cep
+                  type: varchar(8)
+              - column:
+                  name: endereco_nome
+                  type: varchar(60)
+              - column:
+                  name: endereco_numero
+                  type: varchar(20)
+              - column:
+                  name: endereco_bairro
+                  type: varchar(60)
+              - column:
+                  name: endereco_complemento
+                  type: varchar(20)
+              - column:
+                  name: endereco_cidade
+                  type: varchar(20)
+              - column:
+                  name: endereco_uf
+                  type: int
+        - addForeignKeyConstraint:
+            baseTableName: profissional
+            baseColumnNames: profissional_tipo_id
+            referencedTableName: profissional_tipo
+            referencedColumnNames: id
+            constraintName: fk_profissional_tipo
+
+  - changeSet:
+      id: 2
+      author: matheus
+      changes:
+        - createTable:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: categoria
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: procedimento_grupo
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: categoria_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: grupo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: procedimento_grupo
+            baseColumnNames: categoria_id
+            referencedTableName: procedimento_categoria
+            referencedColumnNames: id
+            constraintName: fk_procedimento_grupo_categoria
+        - createTable:
+            tableName: procedimento_tipo
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: grupo_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tipo
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: procedimento_tipo
+            baseColumnNames: grupo_id
+            referencedTableName: procedimento_grupo
+            referencedColumnNames: id
+            constraintName: fk_procedimento_tipo_grupo
+        - createTable:
+            tableName: procedimento
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: procedimento_tipo_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: duracao_minutos
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valor
+                  type: numeric
+                  constraints:
+                    nullable: false
+                    defaultValue: 0.0
+        - addForeignKeyConstraint:
+            baseTableName: procedimento
+            baseColumnNames: procedimento_tipo_id
+            referencedTableName: procedimento_tipo
+            referencedColumnNames: id
+            constraintName: fk_procedimento_tipo
+        - addForeignKeyConstraint:
+            baseTableName: procedimento
+            baseColumnNames: estabelecimento_id
+            referencedTableName: estabelecimento
+            referencedColumnNames: id
+            constraintName: fk_procedimento_estabelecimento
+        - createTable:
+            tableName: procedimento_agendamento
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: procedimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pet_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tutor_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: procedimento_status_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: horario_procedimento
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valor
+                  type: numeric
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: procedimento_agendamento
+            baseColumnNames: procedimento_id
+            referencedTableName: procedimento
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_procedimento
+        - addForeignKeyConstraint:
+            baseTableName: procedimento_agendamento
+            baseColumnNames: profissional_id
+            referencedTableName: profissional
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_profissional
+        - addForeignKeyConstraint:
+            baseTableName: procedimento_agendamento
+            baseColumnNames: pet_id
+            referencedTableName: pet
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_pet
+        - addForeignKeyConstraint:
+            baseTableName: procedimento_agendamento
+            baseColumnNames: tutor_id
+            referencedTableName: tutor
+            referencedColumnNames: id
+            constraintName: fk_procedimento_agendamento_tutor
+
+  - changeSet:
+      id: 3
+      author: matheus
+      changes:
+        - createTable:
+            tableName: estabelecimento_dia_semana
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: dia_semana_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento_dia_semana
+            baseColumnNames: estabelecimento_id
+            referencedTableName: estabelecimento
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_dia_semana_estabelecimento
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento_dia_semana
+            baseColumnNames: dia_semana_id
+            referencedTableName: dia_semana
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_dia_semana_dia
+  - changeSet:
+      id: 4
+      author: matheus
+      changes:
+        - createTable:
+            tableName: estabelecimento_profissional
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento_profissional
+            baseColumnNames: estabelecimento_id
+            referencedTableName: estabelecimento
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_profissional_estabelecimento
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento_profissional
+            baseColumnNames: profissional_id
+            referencedTableName: profissional
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_profissional_profissional
+
+  - changeSet:
+      id: 5
+      author: matheus
+      changes:
+        - createTable:
+            tableName: profissional_especie
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: especie_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: profissional_especie
+            baseColumnNames: profissional_id
+            referencedTableName: profissional
+            referencedColumnNames: id
+            constraintName: fk_profissional_especie_profissional
+        - addForeignKeyConstraint:
+            baseTableName: profissional_especie
+            baseColumnNames: especie_id
+            referencedTableName: especie
+            referencedColumnNames: id
+            constraintName: fk_profissional_especie_especie
+
+        - createTable:
+            tableName: profissional_procedimento_grupo
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: procedimento_grupo_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: profissional_procedimento_grupo
+            baseColumnNames: profissional_id
+            referencedTableName: profissional
+            referencedColumnNames: id
+            constraintName: fk_profissional_procedimento_grupo_profissional
+        - addForeignKeyConstraint:
+            baseTableName: profissional_procedimento_grupo
+            baseColumnNames: procedimento_grupo_id
+            referencedTableName: procedimento_grupo
+            referencedColumnNames: id
+            constraintName: fk_profissional_procedimento_grupo_procedimento_grupo
+
+  - changeSet:
+      id: 6
+      author: matheus
+      changes:
+        - createTable:
+            tableName: profissional_ausencia
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: profissional_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inicio
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fim
+                  type: datetime
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: profissional_ausencia
+            baseColumnNames: profissional_id
+            referencedTableName: profissional
+            referencedColumnNames: id
+            constraintName: fk_profissional_ausencia_profissional
+
+  - changeSet:
+      id: 7
+      author: matheus
+      changes:
+        - createTable:
+            tableName: estabelecimento_tutor
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: estabelecimento_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tutor_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento_tutor
+            baseColumnNames: estabelecimento_id
+            referencedTableName: estabelecimento
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_tutor_estabelecimento
+        - addForeignKeyConstraint:
+            baseTableName: estabelecimento_tutor
+            baseColumnNames: tutor_id
+            referencedTableName: tutor
+            referencedColumnNames: id
+            constraintName: fk_estabelecimento_tutor_tutor

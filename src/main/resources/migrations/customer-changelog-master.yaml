@@ -1,0 +1,169 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - createTable:
+            tableName: tutor
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable:  false
+              - column:
+                  name: cpf
+                  type: varchar(11)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: telefone
+                  type: varchar(12)
+              - column:
+                  name: celular
+                  type: varchar(13)
+              - column:
+                  name: data_cadastro
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ativo
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: endereco_cep
+                  type: varchar(8)
+              - column:
+                  name: endereco_nome
+                  type: varchar(60)
+              - column:
+                  name: endereco_numero
+                  type: varchar(20)
+              - column:
+                  name: endereco_bairro
+                  type: varchar(60)
+              - column:
+                  name: endereco_complemento
+                  type: varchar(20)
+              - column:
+                  name: endereco_cidade
+                  type: varchar(20)
+              - column:
+                  name: endereco_uf
+                  type: int(2)
+        - createTable:
+            tableName: especie
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: pet
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: numero_identificacao
+                  type: varchar(30)
+                  constraints:
+                    unique: true
+              - column:
+                  name: especie_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: genero_id
+                  type: int(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: data_nascimento
+                  type: date
+              - column:
+                  name: peso
+                  type: decimal
+                  constraints:
+                    decimalPrecision: 3
+                    decimalScale: 2
+              - column:
+                  name: castrado
+                  type: boolean
+              - column:
+                  name: ativo
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: pet
+            baseColumnNames: especie_id
+            referencedTableName: especie
+            referencedColumnNames: id
+            constraintName: fk_pet_especie
+        - createTable:
+            tableName: tutor_pet
+            columns:
+              - column:
+                  name: tutor_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pet_id
+                  type: int
+                  constraints:
+                    nullable: false
+            constraints:
+              primaryKey:
+                columnNames:
+                - tutor_id
+                - pet_id
+        - addForeignKeyConstraint:
+            baseTableName: tutor_pet
+            baseColumnNames: tutor_id
+            referencedTableName: tutor
+            referencedColumnNames: id
+            constraintName: fk_tutor_pet_tutor
+        - addForeignKeyConstraint:
+            baseTableName: tutor_pet
+            baseColumnNames: pet_id
+            referencedTableName: pet
+            referencedColumnNames: id
+            constraintName: fk_tutor_pet_pet

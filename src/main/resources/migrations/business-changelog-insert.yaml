@@ -1,0 +1,89 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - insert:
+            tableName: estabelecimento_tipo
+            columns:
+              - column:
+                  name: tipo
+                  value: CLÍNICA
+
+        - insert:
+            tableName: estabelecimento_tipo
+            columns:
+              - column:
+                  name: tipo
+                  value: LABORATÓRIO
+
+  - changeSet:
+      id: 2
+      author: matheus
+      changes:
+        - insert:
+            tableName: profissional_tipo
+            columns:
+              - column:
+                  name: tipo
+                  value: VETERINÁRIO
+
+        - insert:
+            tableName: profissional_tipo
+            columns:
+              - column:
+                  name: tipo
+                  value: AUXILIAR
+
+  - changeSet:
+      id: 3
+      author: matheus
+      changes:
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: CONSULTA
+
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: EXAME
+
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: CIRURGIA
+
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: VACINA
+
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: INTERNACAO
+
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: ANESTESIA
+
+        - insert:
+            tableName: procedimento_categoria
+            columns:
+              - column:
+                  name: categoria
+                  value: CASTRACAO

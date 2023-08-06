@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+      file: classpath:/migrations/core-changelog-master.yaml
+  - include:
+      file: classpath:/migrations/customer-changelog-master.yaml
+  - include:
+      file: classpath:/migrations/business-changelog-master.yaml
+  - include:
+      file: classpath:/migrations/core-changelog-insert.yaml
+  - include:
+      file: classpath:/migrations/customer-changelog-insert.yaml
+  - include:
+      file: classpath:/migrations/business-changelog-insert.yaml
+  - include:
+      file: classpath:/migrations/municipios.sql

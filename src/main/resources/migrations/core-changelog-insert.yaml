@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: dia
+                  value: SEGUNDA
+
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: dia
+                  value: TERCA
+
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: dia
+                  value: QUARTA
+
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: dia
+                  value: QUINTA
+
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: dia
+                  value: SEXTA
+
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: dia
+                  value: SABADO
+
+        - insert:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  value: 7
+              - column:
+                  name: dia
+                  value: DOMINGO

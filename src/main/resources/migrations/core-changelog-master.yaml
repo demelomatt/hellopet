@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: matheus
+      changes:
+        - createTable:
+            tableName: municipio
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: uf_id
+                  type: int(2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ibge
+                  type: int(7)
+        - createTable:
+            tableName: dia_semana
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: dia
+                  type: varchar(13)
+                  constraints:
+                    nullable: false
+                    unique: true
