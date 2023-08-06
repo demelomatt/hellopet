@@ -1,6 +1,6 @@
 package br.com.hellopet.api.rest.core.mapper;
 
-import br.com.hellopet.entities.core.enums.UnidadeFederacao;
+import br.com.hellopet.domain.core.entity.enums.UnidadeFederacao;
 import org.mapstruct.Mapper;
 
 @Mapper

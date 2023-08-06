@@ -2,9 +2,8 @@ package br.com.hellopet.api.rest.core.mapper;
 
 import br.com.hellopet.api.rest.core.model.EnderecoRequest;
 import br.com.hellopet.api.rest.core.model.EnderecoResponse;
-import br.com.hellopet.entities.core.Endereco;
+import br.com.hellopet.domain.core.entity.Endereco;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = {

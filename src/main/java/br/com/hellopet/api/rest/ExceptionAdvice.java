@@ -1,8 +1,8 @@
 package br.com.hellopet.api.rest;
 
-import br.com.hellopet.usecases.common.exception.NotFoundException;
-import br.com.hellopet.datasources.database.relational.common.exception.EntityNotFoundException;
-import br.com.hellopet.datasources.database.relational.common.exception.InvalidDataException;
+import br.com.hellopet.domain.common.exception.NotFoundException;
+import br.com.hellopet.repositories.common.database.relational.exception.EntityNotFoundException;
+import br.com.hellopet.repositories.common.database.relational.exception.InvalidDataException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
