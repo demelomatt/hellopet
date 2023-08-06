@@ -1,7 +1,7 @@
 package br.com.hellopet.repositories.core;
 
-import br.com.hellopet.entities.core.Municipio;
-import br.com.hellopet.entities.core.enums.UnidadeFederacao;
+import br.com.hellopet.domain.core.entity.Municipio;
+import br.com.hellopet.domain.core.entity.enums.UnidadeFederacao;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,7 +2,7 @@ package br.com.hellopet.api.rest.core.controller;
 
 import br.com.hellopet.api.rest.core.mapper.MunicipioApiMapper;
 import br.com.hellopet.api.rest.core.model.MunicipioResponse;
-import br.com.hellopet.usecases.core.MunicipioUseCase;
+import br.com.hellopet.domain.core.usecase.MunicipioUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,10 +1,9 @@
 package br.com.hellopet.repositories.customer;
 
-import br.com.hellopet.entities.customer.Tutor;
+import br.com.hellopet.domain.customer.entity.Tutor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface TutorRepository {
