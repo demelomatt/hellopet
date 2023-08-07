@@ -7,11 +7,17 @@ public class UnidadeFederacaoConverter implements AttributeConverter<UnidadeFede
 
     @Override
     public Integer convertToDatabaseColumn(UnidadeFederacao uf) {
+        if (uf == null) {
+            return null;
+        }
         return uf.getId();
     }
 
     @Override
     public UnidadeFederacao convertToEntityAttribute(Integer id) {
+        if (id == null ){
+            return null;
+        }
         return UnidadeFederacao.fromId(id);
     }
 }

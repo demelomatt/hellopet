@@ -23,7 +23,7 @@ public class EstabelecimentoModel {
     @JoinColumn(name = "estabelecimento_tipo_id", referencedColumnName = "id", nullable = false)
     private EstabelecimentoTipoModel estabelecimentoTipo;
 
-    @Column(name = "cnpj", nullable = false, unique = true)
+    @Column(name = "cnpj", nullable = false, unique = true, length = 14)
     private String cnpj;
 
     @Column(name = "nome", nullable = false)
@@ -32,10 +32,10 @@ public class EstabelecimentoModel {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "telefone")
+    @Column(name = "telefone", length = 12)
     private String telefone;
 
-    @Column(name = "celular")
+    @Column(name = "celular", length = 13)
     private String celular;
 
     @Column(name = "data_fundacao")

@@ -20,12 +20,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: uf_id
-                  type: int(2)
+                  type: int
                   constraints:
                     nullable: false
               - column:
                   name: ibge
-                  type: int(7)
+                  type: int
         - createTable:
             tableName: dia_semana
             columns:

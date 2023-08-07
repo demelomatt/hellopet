@@ -1,9 +1,11 @@
 package br.com.hellopet.api.rest.customer.controller;
 
 import br.com.hellopet.api.rest.customer.mapper.TutorApiMapper;
-import br.com.hellopet.api.rest.customer.model.TutorRequest;
+import br.com.hellopet.api.rest.customer.model.TutorCreateRequest;
 import br.com.hellopet.api.rest.customer.model.TutorResponse;
+import br.com.hellopet.api.rest.customer.model.TutorUpdateRequest;
 import br.com.hellopet.domain.customer.usecase.TutorUseCase;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ public class TutorController {
 
     @PostMapping
     public ResponseEntity<TutorResponse> create(
-            @RequestBody TutorRequest tutorRequest,
+            @Valid @RequestBody TutorCreateRequest tutorRequest,
             UriComponentsBuilder uriBuilder
     ) {
         var tutor = tutorUseCase.create(MAPPER.map(tutorRequest));
@@ -32,7 +34,7 @@ public class TutorController {
     }
 
     @PutMapping
-    public ResponseEntity<TutorResponse> update(@RequestBody TutorRequest tutorRequest) {
+    public ResponseEntity<TutorResponse> update(@Valid @RequestBody TutorUpdateRequest tutorRequest) {
         var tutor = tutorUseCase.update(MAPPER.map(tutorRequest));
         return ResponseEntity.ok(MAPPER.map(tutor));
     }

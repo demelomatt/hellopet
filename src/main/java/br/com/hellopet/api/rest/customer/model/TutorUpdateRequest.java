@@ -1,18 +1,17 @@
 package br.com.hellopet.api.rest.customer.model;
 
 import br.com.hellopet.api.rest.core.model.EnderecoRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
-
-public record TutorRequest(
-        Long id,
+public record TutorUpdateRequest(
+        @NotNull Long id,
         String cpf,
         String nome,
         String email,
         String telefone,
         String celular,
-        EnderecoRequest endereco,
-        LocalDate dataCadastro,
+        @Valid EnderecoRequest endereco,
         Boolean ativo
 ) {
 }
