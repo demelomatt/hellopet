@@ -21,13 +21,13 @@ public class ProfissionalModel {
     @JoinColumn(name = "profissional_tipo_id", referencedColumnName = "id", nullable = false)
     private ProfissionalTipoModel profissionalTipo;
 
-    @Column(name = "cpf", nullable = false, unique = true)
+    @Column(name = "cpf", nullable = false, unique = true, length = 11)
     private String cpf;
 
-    @Column(name = "cfmv", unique = true)
+    @Column(name = "cfmv", unique = true, length = 7)
     private String cfmv;
 
-    @Column(name = "crmv", unique = true)
+    @Column(name = "crmv", unique = true, length = 8)
     private String crmv;
 
     @Column(name = "nome", nullable = false)
@@ -36,10 +36,10 @@ public class ProfissionalModel {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "telefone")
+    @Column(name = "telefone", length = 12)
     private String telefone;
 
-    @Column(name = "celular")
+    @Column(name = "celular", length = 13)
     private String celular;
 
     @Column(name = "data_cadastro", nullable = false)

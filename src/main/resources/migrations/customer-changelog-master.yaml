@@ -12,7 +12,7 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable:  false
+                    nullable: false
               - column:
                   name: cpf
                   type: varchar(11)
@@ -67,7 +67,7 @@ databaseChangeLog:
                   type: varchar(20)
               - column:
                   name: endereco_uf
-                  type: int(2)
+                  type: int
         - createTable:
             tableName: especie
             columns:
@@ -110,7 +110,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: genero_id
-                  type: int(1)
+                  type: int
                   constraints:
                     nullable: false
               - column:

@@ -17,7 +17,7 @@ public class TutorModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cpf", nullable = false, unique = true)
+    @Column(name = "cpf", nullable = false, unique = true, length = 11)
     private String cpf;
 
     @Column(name = "nome", nullable = false)
@@ -26,10 +26,10 @@ public class TutorModel {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "telefone")
+    @Column(name = "telefone", length = 12)
     private String telefone;
 
-    @Column(name = "celular")
+    @Column(name = "celular", length = 13)
     private String celular;
 
     @Embedded

@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Embeddable
 public class EnderecoModel {
-    @Column(name = "endereco_cep", nullable = false)
+    @Column(name = "endereco_cep", nullable = false, length = 8)
     private String cep;
 
     @Column(name = "endereco_logradouro")

@@ -1,11 +1,11 @@
 package br.com.hellopet.repositories.customer.database.relational.repository;
 
+import br.com.hellopet.domain.customer.entity.Tutor;
 import br.com.hellopet.repositories.common.database.relational.exception.EntityNotFoundException;
 import br.com.hellopet.repositories.common.database.relational.exception.InvalidDataException;
+import br.com.hellopet.repositories.customer.TutorRepository;
 import br.com.hellopet.repositories.customer.database.relational.mapper.TutorRepositoryMapper;
 import br.com.hellopet.repositories.customer.database.relational.model.TutorModel;
-import br.com.hellopet.domain.customer.entity.Tutor;
-import br.com.hellopet.repositories.customer.TutorRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
